@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Tarian F.C.</title>
+    <meta name="description" content="Painel administrativo do Tarian F.C." />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/site.css" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
+    <script defer src="assets/admin.js"></script>
+  </head>
+  <body>
+    <div id="admin-app" class="admin-page" v-cloak>
+      <header class="admin-header">
+        <div class="container admin-header-inner">
+          <a class="brand" href="index.html">
+            <img src="icon.svg" alt="Escudo do Tarian F.C." />
+            <span>
+              <span class="brand-title">Tarian F.C.</span>
+              <span class="brand-subtitle">Painel admin</span>
+            </span>
+          </a>
+          <div class="admin-actions">
+            <a class="btn btn-light" href="index.html"><i data-lucide="external-link"></i> Ver site</a>
+            <button v-if="user" class="btn btn-secondary" type="button" @click="logout"><i data-lucide="log-out"></i> Sair</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="container admin-main">
+        <section v-if="!user" class="admin-login card">
+          <span class="eyebrow">Acesso</span>
+          <h1>Entrar no painel.</h1>
+          <form class="form-grid" @submit.prevent="login">
+            <div class="field full">
+              <label for="email">E-mail</label>
+              <input id="email" v-model.trim="auth.email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field full">
+              <label for="password">Senha</label>
+              <input id="password" v-model="auth.password" type="password" autocomplete="current-password" minlength="6" required />
+            </div>
+            <div class="field full admin-login-actions">
+              <button class="btn btn-primary" type="submit" :disabled="busy"><i data-lucide="log-in"></i> Entrar</button>
+              <button class="btn btn-light" type="button" :disabled="busy" @click="register"><i data-lucide="user-plus"></i> Criar acesso</button>
+            </div>
+          </form>
+          <p class="admin-message" v-if="message">{{ message }}</p>
+        </section>
+
+        <section v-else class="admin-layout">
+          <aside class="admin-tabs card">
+            <button v-for="item in tabs" :key="item.id" type="button" :class="{ active: activeTab === item.id }" @click="activeTab = item.id">
+              <i :data-lucide="item.icon"></i>
+              {{ item.label }}
+            </button>
+          </aside>
+
+          <section class="admin-workspace">
+            <div class="admin-topbar card">
+              <div>
+                <span class="eyebrow">Editor</span>
+                <h1>{{ currentTabLabel }}</h1>
+              </div>
+              <div class="admin-save">
+                <span v-if="message">{{ message }}</span>
+                <button class="btn btn-primary" type="button" :disabled="busy" @click="save"><i data-lucide="save"></i> Salvar</button>
+              </div>
+            </div>
+
+            <div class="admin-panel card" v-show="activeTab === 'home'">
+              <h2>Home</h2>
+              <div class="admin-field-grid">
+                <label>Título principal<input v-model="editable.content.home.heroTitle" /></label>
+                <label>Texto principal<textarea v-model="editable.content.home.heroText"></textarea></label>
+                <label>Título da seção<input v-model="editable.content.home.aboutTitle" /></label>
+                <label>Texto da seção<textarea v-model="editable.content.home.aboutText"></textarea></label>
+                <label>Chamada final<input v-model="editable.content.home.ctaTitle" /></label>
+                <label>Texto da chamada<textarea v-model="editable.content.home.ctaText"></textarea></label>
+              </div>
+              <div class="admin-list-head"><h3>Destaques rápidos</h3><button class="btn btn-light" type="button" @click="addItem('stats')"><i data-lucide="plus"></i> Adicionar</button></div>
+              <div class="admin-item" v-for="(item, index) in editable.stats" :key="'stat' + index">
+                <input v-model="item.label" placeholder="Rótulo" />
+                <input v-model="item.value" placeholder="Valor" />
+                <button class="icon-button danger" type="button" @click="removeItem(editable.stats, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
+            <div class="admin-panel card" v-show="activeTab === 'clube'">
+              <h2>Clube</h2>
+              <div class="admin-field-grid">
+                <label>Título da página<input v-model="editable.content.clube.pageTitle" /></label>
+                <label>Texto da página<textarea v-model="editable.content.clube.pageText"></textarea></label>
+                <label>Título da história<input v-model="editable.content.clube.sectionTitle" /></label>
+                <label>Texto da história<textarea v-model="editable.content.clube.sectionText"></textarea></label>
+              </div>
+              <div class="admin-list-head"><h3>Linha do tempo</h3><button class="btn btn-light" type="button" @click="addItem('timeline')"><i data-lucide="plus"></i> Adicionar</button></div>
+              <div class="admin-item tall" v-for="(item, index) in editable.timeline" :key="'time' + index">
+                <input v-model="item.year" placeholder="Ano" />
+                <input v-model="item.title" placeholder="Título" />
+                <textarea v-model="item.text" placeholder="Texto"></textarea>
+                <button class="icon-button danger" type="button" @click="removeItem(editable.timeline, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
+            <div class="admin-panel card" v-show="activeTab === 'elenco'">
+              <h2>Elenco</h2>
+              <div class="admin-field-grid">
+                <label>Título da página<input v-model="editable.content.elenco.pageTitle" /></label>
+                <label>Texto da página<textarea v-model="editable.content.elenco.pageText"></textarea></label>
+                <label>Título do catálogo<input v-model="editable.content.elenco.sectionTitle" /></label>
+                <label>Texto do catálogo<textarea v-model="editable.content.elenco.sectionText"></textarea></label>
+              </div>
+              <div class="admin-list-head"><h3>Jogadores</h3><button class="btn btn-light" type="button" @click="addItem('players')"><i data-lucide="plus"></i> Adicionar jogador</button></div>
+              <div class="admin-item player-editor" v-for="(player, index) in editable.players" :key="player.id || index">
+                <div class="admin-player-preview">
+                  <img v-if="player.photo" :src="player.photo" alt="" />
+                  <span v-else>{{ player.number || '#' }}</span>
+                </div>
+                <input v-model="player.name" placeholder="Nome do jogador" />
+                <input v-model="player.number" placeholder="Camisa" />
+                <input v-model="player.position" placeholder="Posição" />
+                <input v-model="player.photo" placeholder="URL da foto" />
+                <button class="icon-button danger" type="button" @click="removeItem(editable.players, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
+            <div class="admin-panel card" v-show="activeTab === 'jogos'">
+              <h2>Jogos</h2>
+              <div class="admin-field-grid">
+                <label>Título da página<input v-model="editable.content.jogos.pageTitle" /></label>
+                <label>Texto da página<textarea v-model="editable.content.jogos.pageText"></textarea></label>
+                <label>Título do destaque<input v-model="editable.content.jogos.sectionTitle" /></label>
+                <label>Texto do destaque<textarea v-model="editable.content.jogos.sectionText"></textarea></label>
+              </div>
+              <div class="admin-list-head"><h3>Próximos jogos</h3><button class="btn btn-light" type="button" @click="addItem('fixtures')"><i data-lucide="plus"></i> Adicionar</button></div>
+              <div class="admin-item match-editor" v-for="(match, index) in editable.fixtures" :key="'fixture' + index">
+                <input v-model="match.date" placeholder="Data" />
+                <input v-model="match.time" placeholder="Hora" />
+                <input v-model="match.opponent" placeholder="Adversário" />
+                <input v-model="match.competition" placeholder="Competição" />
+                <input v-model="match.venue" placeholder="Local" />
+                <select v-model="match.status"><option>Casa</option><option>Fora</option></select>
+                <button class="icon-button danger" type="button" @click="removeItem(editable.fixtures, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
+            <div class="admin-panel card" v-show="activeTab === 'noticias'">
+              <h2>Notícias</h2>
+              <div class="admin-field-grid">
+                <label>Título da página<input v-model="editable.content.noticias.pageTitle" /></label>
+                <label>Texto da página<textarea v-model="editable.content.noticias.pageText"></textarea></label>
+                <label>Título da lista<input v-model="editable.content.noticias.sectionTitle" /></label>
+              </div>
+              <div class="admin-list-head"><h3>Publicações</h3><button class="btn btn-light" type="button" @click="addItem('news')"><i data-lucide="plus"></i> Adicionar</button></div>
+              <div class="admin-item tall" v-for="(item, index) in editable.news" :key="'news' + index">
+                <input v-model="item.tag" placeholder="Categoria" />
+                <input v-model="item.date" placeholder="Data" />
+                <input v-model="item.title" placeholder="Título" />
+                <textarea v-model="item.text" placeholder="Texto"></textarea>
+                <button class="icon-button danger" type="button" @click="removeItem(editable.news, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
+            <div class="admin-panel card" v-show="activeTab === 'contato'">
+              <h2>Contato</h2>
+              <div class="admin-field-grid">
+                <label>Título da página<input v-model="editable.content.contato.pageTitle" /></label>
+                <label>Texto da página<textarea v-model="editable.content.contato.pageText"></textarea></label>
+                <label>Título da seção<input v-model="editable.content.contato.sectionTitle" /></label>
+                <label>Texto da seção<textarea v-model="editable.content.contato.sectionText"></textarea></label>
+              </div>
+              <div class="admin-list-head"><h3>Canais</h3><button class="btn btn-light" type="button" @click="addItem('contacts')"><i data-lucide="plus"></i> Adicionar</button></div>
+              <div class="admin-item" v-for="(item, index) in editable.contacts" :key="'contact' + index">
+                <input v-model="item.label" placeholder="Nome" />
+                <input v-model="item.value" placeholder="Valor" />
+                <input v-model="item.icon" placeholder="Ícone" />
+                <button class="icon-button danger" type="button" @click="removeItem(editable.contacts, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
     <script defer src="assets/site.js"></script>
   </head>
   <body data-page="jogos">
@@ -39,8 +41,8 @@
         <section class="page-hero">
           <div class="container">
             <span class="eyebrow">Calendário</span>
-            <h1>Jogos, resultados e próximos desafios.</h1>
-            <p>Acompanhe os compromissos do Tarian F.C. na temporada e os resultados recentes da equipe.</p>
+            <h1>{{ content.jogos.pageTitle }}</h1>
+            <p>{{ content.jogos.pageText }}</p>
           </div>
         </section>
 
@@ -48,8 +50,8 @@
           <div class="container grid-2">
             <div>
               <span class="eyebrow">Destaque</span>
-              <h2 class="section-title">Próxima partida em casa.</h2>
-              <p class="section-copy">A Tarian Arena recebe mais um jogo decisivo da Liga Regional, com entrada da torcida pelo portão principal e operação especial para famílias.</p>
+              <h2 class="section-title">{{ content.jogos.sectionTitle }}</h2>
+              <p class="section-copy">{{ content.jogos.sectionText }}</p>
             </div>
             <article class="card match-card">
               <div class="match-head"><span>{{ nextFixture.date }} · {{ nextFixture.time }}</span><strong>Tarian F.C. x {{ nextFixture.opponent }}</strong></div>

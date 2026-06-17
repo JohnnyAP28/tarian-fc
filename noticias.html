@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
     <script defer src="assets/site.js"></script>
   </head>
   <body data-page="noticias">
@@ -39,15 +41,15 @@
         <section class="page-hero">
           <div class="container">
             <span class="eyebrow">Central de notícias</span>
-            <h1>Informação oficial para torcida, imprensa e parceiros.</h1>
-            <p>Bastidores, comunicados, preparação, resultados e projetos do Tarian F.C. reunidos em um só lugar.</p>
+            <h1>{{ content.noticias.pageTitle }}</h1>
+            <p>{{ content.noticias.pageText }}</p>
           </div>
         </section>
 
         <section class="section">
           <div class="container">
             <span class="eyebrow">Atualizações</span>
-            <h2 class="section-title">Últimas publicações.</h2>
+            <h2 class="section-title">{{ content.noticias.sectionTitle }}</h2>
             <div class="grid-3">
               <article class="card news-card" v-for="item in news" :key="item.title">
                 <div class="news-media"><span class="news-tag">{{ item.tag }}</span></div>

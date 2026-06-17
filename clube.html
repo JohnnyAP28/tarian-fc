@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
     <script defer src="assets/site.js"></script>
   </head>
   <body data-page="clube">
@@ -39,8 +41,8 @@
         <section class="page-hero">
           <div class="container">
             <span class="eyebrow">Nossa história</span>
-            <h1>Um clube criado para representar sua comunidade.</h1>
-            <p>O Tarian F.C. une futebol competitivo, formação de atletas e uma marca esportiva pronta para crescer com responsabilidade.</p>
+            <h1>{{ content.clube.pageTitle }}</h1>
+            <p>{{ content.clube.pageText }}</p>
           </div>
         </section>
 
@@ -48,8 +50,8 @@
           <div class="container grid-2">
             <div>
               <span class="eyebrow">Identidade</span>
-              <h2 class="section-title">Verde e dourado dentro e fora de campo.</h2>
-              <p class="section-copy">Nossa cultura combina trabalho, intensidade e respeito. O clube valoriza quem treina com compromisso, joga pelo coletivo e entende que cada partida também constrói uma relação com a torcida.</p>
+              <h2 class="section-title">{{ content.clube.sectionTitle }}</h2>
+              <p class="section-copy">{{ content.clube.sectionText }}</p>
             </div>
             <div class="grid-1 timeline">
               <article class="timeline-item" v-for="item in timeline" :key="item.year">

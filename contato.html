@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
     <script defer src="assets/site.js"></script>
   </head>
   <body data-page="contato">
@@ -39,8 +41,8 @@
         <section class="page-hero">
           <div class="container">
             <span class="eyebrow">Contato</span>
-            <h1>Vamos conversar sobre futebol, torcida e parcerias.</h1>
-            <p>Use os canais oficiais para falar com o Tarian F.C. sobre patrocínio, imprensa, jogos, atletas ou projetos da comunidade.</p>
+            <h1>{{ content.contato.pageTitle }}</h1>
+            <p>{{ content.contato.pageText }}</p>
           </div>
         </section>
 
@@ -48,13 +50,13 @@
           <div class="container contact-grid">
             <div>
               <span class="eyebrow">Canais oficiais</span>
-              <h2 class="section-title">O clube responde por aqui.</h2>
-              <p class="section-copy">Centralize o primeiro contato pelo formulário ou pelos canais abaixo. Os dados são exemplos e podem ser substituídos pelos contatos oficiais do clube.</p>
+              <h2 class="section-title">{{ content.contato.sectionTitle }}</h2>
+              <p class="section-copy">{{ content.contato.sectionText }}</p>
               <div class="contact-list">
-                <div class="contact-item"><i data-lucide="mail"></i><div><strong>E-mail</strong><span>contato@tarianfc.com.br</span></div></div>
-                <div class="contact-item"><i data-lucide="phone"></i><div><strong>Telefone</strong><span>(00) 00000-0000</span></div></div>
-                <div class="contact-item"><i data-lucide="map-pin"></i><div><strong>Endereço</strong><span>Tarian Arena, setor administrativo</span></div></div>
-                <div class="contact-item"><i data-lucide="clock"></i><div><strong>Atendimento</strong><span>Segunda a sexta, 9h às 18h</span></div></div>
+                <div class="contact-item" v-for="item in contacts" :key="item.label">
+                  <i :data-lucide="item.icon || 'circle'"></i>
+                  <div><strong>{{ item.label }}</strong><span>{{ item.value }}</span></div>
+                </div>
               </div>
             </div>
 

@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
     <script defer src="assets/site.js"></script>
   </head>
   <body data-page="home">
@@ -44,8 +46,8 @@
         <section class="hero">
           <div class="container hero-content">
             <span class="hero-badge"><img src="icon.svg" alt="" /> Temporada 2026</span>
-            <h1>Tarian F.C.</h1>
-            <p>Um clube feito para competir com intensidade, revelar talentos e aproximar a torcida de cada partida.</p>
+            <h1>{{ content.home.heroTitle }}</h1>
+            <p>{{ content.home.heroText }}</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="jogos.html"><i data-lucide="calendar-days"></i> Próximos jogos</a>
               <a class="btn btn-secondary" href="clube.html"><i data-lucide="shield"></i> Conheça o clube</a>
@@ -68,8 +70,8 @@
           <div class="container grid-2">
             <div>
               <span class="eyebrow">O clube</span>
-              <h2 class="section-title">Competir, formar e representar.</h2>
-              <p class="section-copy">O Tarian F.C. nasceu com a ambição de jogar um futebol organizado, intenso e conectado com sua comunidade. Cada treino, jogo e projeto de base reforça a ideia de um clube moderno sem perder suas raízes.</p>
+              <h2 class="section-title">{{ content.home.aboutTitle }}</h2>
+              <p class="section-copy">{{ content.home.aboutText }}</p>
               <div class="hero-actions">
                 <a class="btn btn-light" href="elenco.html"><i data-lucide="users"></i> Ver elenco</a>
                 <a class="btn btn-primary" href="contato.html"><i data-lucide="mail"></i> Fale conosco</a>
@@ -130,8 +132,8 @@
         <section class="section-tight">
           <div class="container">
             <div class="cta-band">
-              <h2>Faça parte da próxima vitória.</h2>
-              <p>O Tarian F.C. está aberto a parcerias com marcas, projetos sociais, imprensa e atletas que queiram crescer junto com o clube.</p>
+              <h2>{{ content.home.ctaTitle }}</h2>
+              <p>{{ content.home.ctaText }}</p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="contato.html"><i data-lucide="send"></i> Abrir contato</a>
                 <a class="btn btn-secondary" href="jogos.html"><i data-lucide="trophy"></i> Ver calendário</a>
