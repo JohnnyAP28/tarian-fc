@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elenco | Tarian F.C.</title>
+    <meta name="description" content="Elenco principal e comissão técnica do Tarian F.C." />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body data-page="elenco">
+    <div id="app" class="site-shell" v-cloak>
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="index.html" aria-label="Tarian F.C.">
+            <img src="icon.svg" alt="Escudo do Tarian F.C." />
+            <span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Futebol com identidade</span></span>
+          </a>
+          <nav class="desktop-nav" aria-label="Navegação principal">
+            <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
+          </nav>
+          <div class="header-actions">
+            <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
+            <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen"><i data-lucide="menu"></i></button>
+          </div>
+        </div>
+        <div class="mobile-panel" v-show="mobileOpen">
+          <div class="container">
+            <a v-for="item in navItems" :key="item.id" :class="{ 'is-active': isActive(item.id) }" :href="item.href" @click="mobileOpen = false">{{ item.label }}</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-hero">
+          <div class="container">
+            <span class="eyebrow">Elenco principal</span>
+            <h1>Atletas para sustentar intensidade e decisão.</h1>
+            <p>Um grupo competitivo, equilibrado e preparado para representar o Tarian F.C. durante toda a temporada.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <span class="eyebrow">Jogadores</span>
+            <h2 class="section-title">Plantel 2026.</h2>
+            <div class="grid-4">
+              <article class="card player-card" v-for="player in players" :key="player.number">
+                <div class="player-top">
+                  <div class="player-number">{{ player.number }}</div>
+                  <span class="player-position">{{ player.position }}</span>
+                </div>
+                <div class="player-body">
+                  <h3>{{ player.name }}</h3>
+                  <div class="player-stats">
+                    <div class="player-stat"><span>Idade</span><strong>{{ player.age }}</strong></div>
+                    <div class="player-stat"><span>Jogos</span><strong>{{ player.matches }}</strong></div>
+                    <div class="player-stat"><span>Gols</span><strong>{{ player.goals }}</strong></div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section band">
+          <div class="container">
+            <span class="eyebrow">Comissão técnica</span>
+            <h2 class="section-title">Equipe que prepara o jogo.</h2>
+            <div class="grid-3">
+              <article class="card staff-card" v-for="person in staff" :key="person.name">
+                <span class="news-tag">{{ person.role }}</span>
+                <h3>{{ person.name }}</h3>
+                <p>{{ person.text }}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-tight">
+          <div class="container">
+            <div class="cta-band">
+              <h2>Quer jogar ou indicar um atleta?</h2>
+              <p>O clube mantém observação aberta para atletas comprometidos com treino, disciplina e evolução.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="contato.html"><i data-lucide="clipboard-list"></i> Enviar contato</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div><a class="brand" href="index.html"><img src="icon.svg" alt="" /><span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
+            <div><h3>Clube</h3><div class="footer-links"><a href="clube.html">História</a><a href="elenco.html">Elenco</a><a href="jogos.html">Jogos</a></div></div>
+            <div><h3>Contato</h3><div class="footer-links"><a href="mailto:contato@tarianfc.com.br">contato@tarianfc.com.br</a><a href="tel:+5500000000000">(00) 00000-0000</a></div></div>
+            <div><h3>Redes</h3><div class="footer-links"><a href="contato.html">Instagram</a><a href="contato.html">YouTube</a><a href="contato.html">TikTok</a></div></div>
+          </div>
+          <div class="footer-bottom"><span>© 2026 Tarian F.C.</span><span>Site institucional oficial</span></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

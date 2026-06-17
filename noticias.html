@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notícias | Tarian F.C.</title>
+    <meta name="description" content="Últimas notícias, bastidores e comunicados do Tarian F.C." />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body data-page="noticias">
+    <div id="app" class="site-shell" v-cloak>
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="index.html" aria-label="Tarian F.C.">
+            <img src="icon.svg" alt="Escudo do Tarian F.C." />
+            <span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Futebol com identidade</span></span>
+          </a>
+          <nav class="desktop-nav" aria-label="Navegação principal">
+            <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
+          </nav>
+          <div class="header-actions">
+            <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
+            <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen"><i data-lucide="menu"></i></button>
+          </div>
+        </div>
+        <div class="mobile-panel" v-show="mobileOpen">
+          <div class="container">
+            <a v-for="item in navItems" :key="item.id" :class="{ 'is-active': isActive(item.id) }" :href="item.href" @click="mobileOpen = false">{{ item.label }}</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-hero">
+          <div class="container">
+            <span class="eyebrow">Central de notícias</span>
+            <h1>Informação oficial para torcida, imprensa e parceiros.</h1>
+            <p>Bastidores, comunicados, preparação, resultados e projetos do Tarian F.C. reunidos em um só lugar.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <span class="eyebrow">Atualizações</span>
+            <h2 class="section-title">Últimas publicações.</h2>
+            <div class="grid-3">
+              <article class="card news-card" v-for="item in news" :key="item.title">
+                <div class="news-media"><span class="news-tag">{{ item.tag }}</span></div>
+                <div class="news-body">
+                  <span class="news-date">{{ item.date }}</span>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ item.text }}</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-tight">
+          <div class="container grid-2">
+            <div>
+              <span class="eyebrow">Imprensa</span>
+              <h2 class="section-title">Contato para pautas e cobertura.</h2>
+              <p class="section-copy">O Tarian F.C. atende imprensa local, criadores de conteúdo e canais esportivos interessados em jogos, entrevistas e ações do clube.</p>
+            </div>
+            <div class="card feature-card">
+              <div class="feature-icon"><i data-lucide="newspaper"></i></div>
+              <h3>Assessoria Tarian</h3>
+              <p>Solicite informações, fotos oficiais, agenda de entrevistas e credenciamento para partidas.</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="contato.html"><i data-lucide="mail"></i> Falar com a assessoria</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div><a class="brand" href="index.html"><img src="icon.svg" alt="" /><span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
+            <div><h3>Clube</h3><div class="footer-links"><a href="clube.html">História</a><a href="elenco.html">Elenco</a><a href="jogos.html">Jogos</a></div></div>
+            <div><h3>Contato</h3><div class="footer-links"><a href="mailto:contato@tarianfc.com.br">contato@tarianfc.com.br</a><a href="tel:+5500000000000">(00) 00000-0000</a></div></div>
+            <div><h3>Redes</h3><div class="footer-links"><a href="contato.html">Instagram</a><a href="contato.html">YouTube</a><a href="contato.html">TikTok</a></div></div>
+          </div>
+          <div class="footer-bottom"><span>© 2026 Tarian F.C.</span><span>Site institucional oficial</span></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

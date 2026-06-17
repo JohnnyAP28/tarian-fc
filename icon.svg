@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Tarian F.C.</title>
+  <desc id="desc">Escudo moderno verde e dourado do Tarian F.C.</desc>
+  <rect width="512" height="512" rx="112" fill="#f7c948"/>
+  <path d="M256 58 408 118v118c0 96-58 178-152 218-94-40-152-122-152-218V118L256 58Z" fill="#075c3b"/>
+  <path d="M256 92 374 139v98c0 74-43 139-118 174-75-35-118-100-118-174v-98l118-47Z" fill="#0a7a4a"/>
+  <path d="M174 158h164v38h-59v156h-46V196h-59v-38Z" fill="#fff8df"/>
+  <path d="M182 374c28 18 53 28 74 28 21 0 46-10 74-28l-74-36-74 36Z" fill="#f7c948"/>
+  <circle cx="256" cy="282" r="42" fill="#fff8df"/>
+  <path d="M256 246 292 272l-14 42h-44l-14-42 36-26Z" fill="#075c3b"/>
+</svg>

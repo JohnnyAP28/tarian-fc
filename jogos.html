@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jogos | Tarian F.C.</title>
+    <meta name="description" content="Próximos jogos, resultados e calendário do Tarian F.C." />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body data-page="jogos">
+    <div id="app" class="site-shell" v-cloak>
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="index.html" aria-label="Tarian F.C.">
+            <img src="icon.svg" alt="Escudo do Tarian F.C." />
+            <span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Futebol com identidade</span></span>
+          </a>
+          <nav class="desktop-nav" aria-label="Navegação principal">
+            <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
+          </nav>
+          <div class="header-actions">
+            <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
+            <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen"><i data-lucide="menu"></i></button>
+          </div>
+        </div>
+        <div class="mobile-panel" v-show="mobileOpen">
+          <div class="container">
+            <a v-for="item in navItems" :key="item.id" :class="{ 'is-active': isActive(item.id) }" :href="item.href" @click="mobileOpen = false">{{ item.label }}</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="page-hero">
+          <div class="container">
+            <span class="eyebrow">Calendário</span>
+            <h1>Jogos, resultados e próximos desafios.</h1>
+            <p>Acompanhe os compromissos do Tarian F.C. na temporada e os resultados recentes da equipe.</p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container grid-2">
+            <div>
+              <span class="eyebrow">Destaque</span>
+              <h2 class="section-title">Próxima partida em casa.</h2>
+              <p class="section-copy">A Tarian Arena recebe mais um jogo decisivo da Liga Regional, com entrada da torcida pelo portão principal e operação especial para famílias.</p>
+            </div>
+            <article class="card match-card">
+              <div class="match-head"><span>{{ nextFixture.date }} · {{ nextFixture.time }}</span><strong>Tarian F.C. x {{ nextFixture.opponent }}</strong></div>
+              <div class="match-body">
+                <div class="meta-list">
+                  <div class="meta-row"><i data-lucide="trophy"></i> {{ nextFixture.competition }}</div>
+                  <div class="meta-row"><i data-lucide="map-pin"></i> {{ nextFixture.venue }}</div>
+                  <div class="meta-row"><i data-lucide="flag"></i> Mandante: Tarian F.C.</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-tight">
+          <div class="container">
+            <span class="eyebrow">Agenda</span>
+            <h2 class="section-title">Próximos jogos.</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Data</th><th>Hora</th><th>Adversário</th><th>Competição</th><th>Local</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr v-for="match in fixtures" :key="match.date + match.opponent">
+                    <td>{{ match.date }}</td>
+                    <td>{{ match.time }}</td>
+                    <td>{{ match.opponent }}</td>
+                    <td>{{ match.competition }}</td>
+                    <td>{{ match.venue }}</td>
+                    <td><span class="status" :class="match.status === 'Casa' ? 'home' : 'away'">{{ match.status }}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <span class="eyebrow">Resultados</span>
+            <h2 class="section-title">Últimas partidas.</h2>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Data</th><th>Adversário</th><th>Placar</th><th>Local</th><th>Resultado</th></tr></thead>
+                <tbody>
+                  <tr v-for="match in results" :key="match.date + match.opponent">
+                    <td>{{ match.date }}</td>
+                    <td>{{ match.opponent }}</td>
+                    <td>{{ match.score }}</td>
+                    <td>{{ match.venue }}</td>
+                    <td>{{ match.note }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div><a class="brand" href="index.html"><img src="icon.svg" alt="" /><span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
+            <div><h3>Clube</h3><div class="footer-links"><a href="clube.html">História</a><a href="elenco.html">Elenco</a><a href="jogos.html">Jogos</a></div></div>
+            <div><h3>Contato</h3><div class="footer-links"><a href="mailto:contato@tarianfc.com.br">contato@tarianfc.com.br</a><a href="tel:+5500000000000">(00) 00000-0000</a></div></div>
+            <div><h3>Redes</h3><div class="footer-links"><a href="contato.html">Instagram</a><a href="contato.html">YouTube</a><a href="contato.html">TikTok</a></div></div>
+          </div>
+          <div class="footer-bottom"><span>© 2026 Tarian F.C.</span><span>Site institucional oficial</span></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
