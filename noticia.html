@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notícia | Tarian F.C.</title>
+    <meta name="description" content="Leia a notícia completa do Tarian F.C." />
+    <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body data-page="noticia">
+    <div id="app" class="site-shell" v-cloak>
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="index.html" aria-label="Tarian F.C.">
+            <img src="assets/tarian-logo.png" alt="Logo do Tarian Futebol Clube" />
+            <span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Futebol com identidade</span></span>
+          </a>
+          <nav class="desktop-nav" aria-label="Navegação principal">
+            <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
+          </nav>
+          <div class="header-actions">
+            <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
+            <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen"><i data-lucide="menu"></i></button>
+          </div>
+        </div>
+        <div class="mobile-panel" v-show="mobileOpen">
+          <div class="container">
+            <a v-for="item in navItems" :key="item.id" :class="{ 'is-active': isActive(item.id) }" :href="item.href" @click="mobileOpen = false">{{ item.label }}</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="article-page" v-if="selectedNews">
+          <div class="container">
+            <a class="article-back" href="noticias.html"><i data-lucide="arrow-left"></i> Notícias</a>
+            <article class="article-shell">
+              <div class="article-media">
+                <img :src="newsImage(selectedNews)" :alt="selectedNews.imageAlt || selectedNews.title" @error="fallbackNewsImage" />
+              </div>
+              <div class="article-content">
+                <span class="news-tag article-tag">{{ selectedNews.tag || 'Clube' }}</span>
+                <h1>{{ selectedNews.title }}</h1>
+                <div class="article-meta"><i data-lucide="calendar"></i> {{ selectedNews.date }}</div>
+                <p class="article-lead" v-if="selectedNews.excerpt && selectedNews.excerpt !== selectedNews.text">{{ selectedNews.excerpt }}</p>
+                <div class="article-body">
+                  <p v-for="paragraph in selectedNewsParagraphs" :key="paragraph">{{ paragraph }}</p>
+                </div>
+                <div class="hero-actions" v-if="articleExtraLink(selectedNews)">
+                  <a class="btn btn-light" :href="articleExtraLink(selectedNews)" :target="articleExtraTarget(selectedNews)" :rel="articleExtraRel(selectedNews)">
+                    <i data-lucide="external-link"></i> Link relacionado
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" v-else-if="contentReady">
+          <div class="container">
+            <span class="eyebrow">Notícia</span>
+            <h1 class="section-title">Notícia não encontrada.</h1>
+            <p class="section-copy">A publicação pode ter sido removida ou o endereço pode ter mudado.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="noticias.html"><i data-lucide="newspaper"></i> Ver notícias</a>
+              <a class="btn btn-light" href="index.html"><i data-lucide="home"></i> Voltar para Home</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" v-else>
+          <div class="container">
+            <span class="eyebrow">Notícia</span>
+            <h1 class="section-title">Carregando notícia.</h1>
+          </div>
+        </section>
+
+        <section class="section-tight news-section" v-if="selectedNews && relatedNews.length">
+          <div class="container">
+            <span class="eyebrow">Mais notícias</span>
+            <h2 class="section-title section-title-sm">Continue lendo.</h2>
+            <div class="news-grid news-grid-home">
+              <article class="news-card" v-for="item in relatedNews" :key="item.title">
+                <a class="news-media" :href="newsLink(item)">
+                  <img :src="newsImage(item)" :alt="item.imageAlt || item.title" @error="fallbackNewsImage" />
+                  <span class="news-tag">{{ item.tag || 'Clube' }}</span>
+                </a>
+                <div class="news-body">
+                  <span class="news-date">{{ item.date }}</span>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ newsExcerpt(item) }}</p>
+                  <a class="news-read" :href="newsLink(item)">{{ item.cta || 'Leia agora' }}</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div><a class="brand" href="index.html"><img src="assets/tarian-logo.png" alt="" /><span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
+            <div><h3>Clube</h3><div class="footer-links"><a href="clube.html">História</a><a href="elenco.html">Elenco</a><a href="jogos.html">Jogos</a></div></div>
+            <div><h3>Contato</h3><div class="footer-links"><a href="mailto:contato@tarianfc.com.br">contato@tarianfc.com.br</a><a href="tel:+5500000000000">(00) 00000-0000</a></div></div>
+            <div><h3>Redes</h3><div class="footer-links"><a href="contato.html">Instagram</a><a href="contato.html">YouTube</a><a href="contato.html">TikTok</a></div></div>
+          </div>
+          <div class="footer-bottom"><span>© 2026 Tarian F.C.</span><span>Site institucional oficial</span></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

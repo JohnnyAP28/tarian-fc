@@ -5,6 +5,7 @@ const app = Vue.createApp({
     return {
       ...publicSiteData,
       mobileOpen: false,
+      contentReady: false,
       toastVisible: false,
       toastText: "Mensagem enviada. O Tarian F.C. vai retornar em breve."
     };
@@ -12,6 +13,32 @@ const app = Vue.createApp({
   computed: {
     currentPage() {
       return document.body.dataset.page || "home";
+    },
+    selectedNewsSlug() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("noticia") || params.get("slug") || "";
+    },
+    selectedNews() {
+      if (this.currentPage !== "noticia") {
+        return null;
+      }
+      return this.news.find((item) => this.newsSlug(item) === this.selectedNewsSlug) || null;
+    },
+    selectedNewsParagraphs() {
+      if (!this.selectedNews) {
+        return [];
+      }
+      const body = this.selectedNews.text || this.selectedNews.excerpt || "";
+      return body
+        .split(/\n+/)
+        .map((paragraph) => paragraph.trim())
+        .filter(Boolean);
+    },
+    relatedNews() {
+      if (!this.selectedNews) {
+        return this.news.slice(0, 3);
+      }
+      return this.news.filter((item) => this.newsSlug(item) !== this.newsSlug(this.selectedNews)).slice(0, 3);
     },
     nextFixture() {
       return this.fixtures[0] || {
@@ -58,6 +85,9 @@ const app = Vue.createApp({
   },
   methods: {
     isActive(id) {
+      if (id === "noticias" && this.currentPage === "noticia") {
+        return true;
+      }
       return this.currentPage === id;
     },
     matchHomeName(match) {
@@ -84,18 +114,42 @@ const app = Vue.createApp({
     newsImage(item) {
       return item.image || "assets/tarian-hero.png";
     },
+    slugify(value) {
+      return (value || "noticia")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "") || "noticia";
+    },
+    newsSlug(item) {
+      return this.slugify(item.slug || item.title || item.date || "noticia");
+    },
     newsExcerpt(item) {
       const text = item.excerpt || item.text || "";
       return text.length > 150 ? `${text.slice(0, 147).trim()}...` : text;
     },
     newsLink(item) {
-      return item.href || "noticias.html";
+      return `noticia.html?noticia=${encodeURIComponent(this.newsSlug(item))}`;
     },
     newsTarget(item) {
-      return /^https?:\/\//.test(item.href || "") ? "_blank" : null;
+      return null;
     },
     newsRel(item) {
-      return this.newsTarget(item) ? "noopener noreferrer" : null;
+      return null;
+    },
+    articleExtraLink(item) {
+      const href = item.href || "";
+      if (!href || href === "noticias.html" || href.startsWith("noticia.html")) {
+        return "";
+      }
+      return href;
+    },
+    articleExtraTarget(item) {
+      return /^https?:\/\//.test(this.articleExtraLink(item)) ? "_blank" : null;
+    },
+    articleExtraRel(item) {
+      return this.articleExtraTarget(item) ? "noopener noreferrer" : null;
     },
     fallbackNewsImage(event) {
       if (event.target.src.includes("assets/tarian-hero.png")) {
@@ -120,11 +174,16 @@ const app = Vue.createApp({
     },
     async loadContent() {
       if (!window.TarianCMS) {
+        this.contentReady = true;
         return;
       }
-      const remoteData = await window.TarianCMS.load();
-      if (remoteData) {
-        this.applyData(remoteData);
+      try {
+        const remoteData = await window.TarianCMS.load();
+        if (remoteData) {
+          this.applyData(remoteData);
+        }
+      } finally {
+        this.contentReady = true;
       }
     },
     submitContact() {
