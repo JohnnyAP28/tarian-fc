@@ -43,6 +43,25 @@ const app = Vue.createApp({
     featuredProducts() {
       return this.products.filter((product) => product.available !== false).slice(0, 6);
     },
+    selectedProductSlug() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("produto") || params.get("slug") || "";
+    },
+    selectedProduct() {
+      if (this.currentPage !== "produto") {
+        return null;
+      }
+      return this.products.find((product) => this.productSlug(product) === this.selectedProductSlug) || null;
+    },
+    relatedProducts() {
+      if (!this.selectedProduct) {
+        return this.products.filter((product) => product.available !== false).slice(0, 6);
+      }
+      return this.products
+        .filter((product) => product.available !== false)
+        .filter((product) => this.productSlug(product) !== this.productSlug(this.selectedProduct))
+        .slice(0, 6);
+    },
     nextFixture() {
       return this.fixtures[0] || {
         date: "Em breve",
@@ -91,6 +110,9 @@ const app = Vue.createApp({
       if (id === "noticias" && this.currentPage === "noticia") {
         return true;
       }
+      if (id === "loja" && this.currentPage === "produto") {
+        return true;
+      }
       return this.currentPage === id;
     },
     matchHomeName(match) {
@@ -121,13 +143,53 @@ const app = Vue.createApp({
       return product.image || "assets/tarian-hero.png";
     },
     productLink(product) {
-      return product.buyLink || "contato.html";
+      return `produto.html?produto=${encodeURIComponent(this.productSlug(product))}`;
     },
     productTarget(product) {
-      return /^https?:\/\//.test(product.buyLink || "") ? "_blank" : null;
+      return null;
     },
     productRel(product) {
-      return this.productTarget(product) ? "noopener noreferrer" : null;
+      return null;
+    },
+    productSlug(product) {
+      return this.slugify(product.slug || product.name || product.category || "produto");
+    },
+    productWhatsAppNumber(product) {
+      const direct = product.whatsapp || "";
+      const contact = this.contacts.find((item) => (item.href || "").startsWith("tel:")) || this.contacts.find((item) => /\d/.test(item.value || ""));
+      const fallback = contact?.href || contact?.value || "";
+      return (direct || fallback).replace(/\D/g, "");
+    },
+    productWhatsAppLink(product) {
+      const number = this.productWhatsAppNumber(product);
+      if (!number) {
+        return "contato.html";
+      }
+      const message = product.whatsappMessage || `Olá, tenho interesse no produto ${product.name} do Tarian F.C.`;
+      return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+    },
+    productWhatsAppTarget(product) {
+      return this.productWhatsAppNumber(product) ? "_blank" : null;
+    },
+    productWhatsAppRel(product) {
+      return this.productWhatsAppNumber(product) ? "noopener noreferrer" : null;
+    },
+    productSpecs(product) {
+      return [
+        { label: "Categoria", value: product.category },
+        { label: "Preço", value: product.price || "Sob consulta" },
+        { label: "Tamanhos", value: product.sizes },
+        { label: "Cores", value: product.colors },
+        { label: "Material", value: product.material },
+        { label: "Disponibilidade", value: product.available === false ? "Indisponível" : "Disponível" }
+      ].filter((item) => item.value);
+    },
+    productDetailParagraphs(product) {
+      const text = product?.details || product?.description || "";
+      return text
+        .split(/\n+/)
+        .map((paragraph) => paragraph.trim())
+        .filter(Boolean);
     },
     sectionProducts(section) {
       const category = (section.category || "").trim().toLowerCase();

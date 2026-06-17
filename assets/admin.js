@@ -127,7 +127,7 @@ const adminApp = Vue.createApp({
         fixtures: { date: "Data", time: "Hora", opponent: "Adversário", venue: "Local", competition: "Competição", round: "Rodada", status: "Casa", teamLogo: "assets/tarian-logo.png", opponentLogo: "", ticketStatus: "Em definição" },
         news: { tag: "Clube", date: "Data", title: "Nova notícia", slug: "", excerpt: "Resumo da notícia.", text: "Texto da notícia.", image: "assets/tarian-hero.png", imageAlt: "", href: "", cta: "Leia agora" },
         shopSections: { eyebrow: "Categoria", title: "Nova seção", text: "Descrição da seção.", category: "Categoria" },
-        products: { name: "Novo produto", category: "Categoria", price: "Sob consulta", badge: "", description: "Descrição do produto.", image: "assets/tarian-hero.png", buttonText: "Comprar", buyLink: "contato.html", available: true },
+        products: { name: "Novo produto", slug: "", category: "Categoria", price: "Sob consulta", badge: "", description: "Descrição do produto.", details: "Detalhes completos do produto.", sizes: "", colors: "", material: "", whatsapp: "5500000000000", whatsappMessage: "", image: "assets/tarian-hero.png", buttonText: "Comprar", buyLink: "contato.html", available: true },
         contacts: { icon: "circle", label: "Novo canal", value: "Informação", href: "" }
       };
       this.editable[type].push(items[type]);
@@ -181,10 +181,17 @@ const adminApp = Vue.createApp({
       }
       this.editable.products = this.editable.products.map((product) => ({
         name: "",
+        slug: "",
         category: "",
         price: "Sob consulta",
         badge: "",
         description: "",
+        details: "",
+        sizes: "",
+        colors: "",
+        material: "",
+        whatsapp: "5500000000000",
+        whatsappMessage: "",
         image: "assets/tarian-hero.png",
         buttonText: "Comprar",
         buyLink: "contato.html",

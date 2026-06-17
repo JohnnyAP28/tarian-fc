@@ -173,7 +173,8 @@ h3,
 }
 
 .shop-shortcut:hover,
-body[data-page="loja"] .shop-shortcut {
+body[data-page="loja"] .shop-shortcut,
+body[data-page="produto"] .shop-shortcut {
   background: var(--gold-500);
   color: #1f2b12;
 }
@@ -1385,6 +1386,168 @@ tr:last-child td {
   background: var(--green-950);
 }
 
+.product-page {
+  padding: 44px 0 54px;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+  gap: 24px;
+  align-items: start;
+}
+
+.product-detail-media {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #eef3ef;
+  box-shadow: 0 18px 48px rgba(4, 37, 26, 0.08);
+}
+
+.product-detail-media img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.product-detail-info {
+  display: grid;
+  gap: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: 0 18px 48px rgba(4, 37, 26, 0.08);
+  padding: clamp(22px, 3vw, 30px);
+}
+
+.product-detail-info h1 {
+  margin: 0;
+  color: var(--green-950);
+  font-size: clamp(2rem, 4.2vw, 3.7rem);
+  font-weight: 950;
+  line-height: 0.98;
+}
+
+.product-detail-summary {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.product-detail-price {
+  color: var(--green-950);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3.2vw, 2.45rem);
+  font-weight: 950;
+}
+
+.product-availability {
+  width: fit-content;
+  border-radius: 999px;
+  background: rgba(10, 122, 74, 0.11);
+  color: var(--green-800);
+  font-size: 0.8rem;
+  font-weight: 950;
+  padding: 8px 12px;
+  text-transform: uppercase;
+}
+
+.product-availability.is-unavailable {
+  background: rgba(180, 35, 24, 0.1);
+  color: #b42318;
+}
+
+.product-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.product-spec {
+  border: 1px solid rgba(7, 92, 59, 0.12);
+  border-radius: var(--radius);
+  background: #fbfdf9;
+  padding: 12px;
+}
+
+.product-spec dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.product-spec dd {
+  margin: 4px 0 0;
+  color: var(--green-950);
+  font-weight: 900;
+}
+
+.product-payment-box {
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(247, 201, 72, 0.46);
+  border-radius: var(--radius);
+  background: #fff9df;
+  padding: 16px;
+}
+
+.product-payment-box strong {
+  color: var(--green-950);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 950;
+}
+
+.product-payment-box p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.whatsapp-buy {
+  background: #0a7a4a;
+  color: white;
+}
+
+.whatsapp-buy:hover,
+.whatsapp-buy:focus-visible {
+  background: #075c3b;
+}
+
+.product-detail-description {
+  max-width: 820px;
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: white;
+  box-shadow: 0 14px 34px rgba(4, 37, 26, 0.06);
+  padding: clamp(22px, 4vw, 34px);
+}
+
+.product-detail-description h2 {
+  margin: 8px 0 18px;
+  color: var(--green-950);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.product-detail-description p {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.68;
+}
+
+.product-detail-description p:last-child {
+  margin-bottom: 0;
+}
+
 .empty-note {
   margin: 18px 0 0;
   color: var(--muted);
@@ -1883,6 +2046,10 @@ tr:last-child td {
     grid-template-columns: 1fr;
   }
 
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+
   .section-heading-row {
     align-items: start;
     flex-direction: column;
@@ -2069,6 +2236,37 @@ tr:last-child td {
   .shop-section {
     padding-top: 28px;
     padding-bottom: 24px;
+  }
+
+  .product-page {
+    padding: 28px 0 36px;
+  }
+
+  .product-detail {
+    gap: 14px;
+  }
+
+  .product-detail-info {
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .product-detail-info h1 {
+    font-size: clamp(1.9rem, 10vw, 2.6rem);
+  }
+
+  .product-spec-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .product-payment-box {
+    padding: 14px;
+  }
+
+  .product-detail-description {
+    margin-top: 18px;
+    padding: 18px;
   }
 
   .match-rail {

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produto | Tarian F.C.</title>
+    <meta name="description" content="Veja os detalhes do produto oficial do Tarian F.C. e fale com o clube pelo WhatsApp para comprar." />
+    <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/site.css" />
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="assets/data.js"></script>
+    <script defer src="assets/cms.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body data-page="produto">
+    <div id="app" class="site-shell" v-cloak>
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="index.html" aria-label="Tarian F.C.">
+            <img src="assets/tarian-logo.png" alt="Logo do Tarian Futebol Clube" />
+            <span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Futebol com identidade</span></span>
+          </a>
+          <nav class="desktop-nav" aria-label="Navegação principal">
+            <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
+          </nav>
+          <div class="header-actions">
+            <a class="icon-button shop-shortcut" href="loja.html" aria-label="Abrir loja"><i data-lucide="shopping-bag"></i></a>
+            <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
+            <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen"><i data-lucide="menu"></i></button>
+          </div>
+        </div>
+        <div class="mobile-panel" v-show="mobileOpen">
+          <div class="container">
+            <a v-for="item in navItems" :key="item.id" :class="{ 'is-active': isActive(item.id) }" :href="item.href" @click="mobileOpen = false">{{ item.label }}</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="product-page" v-if="selectedProduct">
+          <div class="container">
+            <a class="article-back" href="loja.html"><i data-lucide="arrow-left"></i> Voltar para loja</a>
+
+            <article class="product-detail">
+              <div class="product-detail-media">
+                <img :src="productImage(selectedProduct)" :alt="'Produto ' + selectedProduct.name" @error="fallbackNewsImage" />
+              </div>
+
+              <div class="product-detail-info">
+                <span class="eyebrow">{{ selectedProduct.category || 'Loja oficial' }}</span>
+                <h1>{{ selectedProduct.name }}</h1>
+                <p class="product-detail-summary" v-if="selectedProduct.description">{{ selectedProduct.description }}</p>
+                <div class="product-detail-price">{{ selectedProduct.price || 'Sob consulta' }}</div>
+                <div class="product-availability" :class="{ 'is-unavailable': selectedProduct.available === false }">
+                  {{ selectedProduct.available === false ? 'Produto indisponível no momento' : 'Produto disponível para consulta' }}
+                </div>
+
+                <dl class="product-spec-grid" v-if="productSpecs(selectedProduct).length">
+                  <div class="product-spec" v-for="spec in productSpecs(selectedProduct)" :key="spec.label">
+                    <dt>{{ spec.label }}</dt>
+                    <dd>{{ spec.value }}</dd>
+                  </div>
+                </dl>
+
+                <div class="product-payment-box">
+                  <strong>Pagamento e compra</strong>
+                  <p>Para comprar, fale com o clube pelo WhatsApp. O atendimento confirma tamanho, disponibilidade, forma de pagamento e retirada.</p>
+                  <a class="btn btn-primary whatsapp-buy" :href="productWhatsAppLink(selectedProduct)" :target="productWhatsAppTarget(selectedProduct)" :rel="productWhatsAppRel(selectedProduct)">
+                    <i data-lucide="message-circle"></i> Comprar pelo WhatsApp
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <section class="product-detail-description" v-if="productDetailParagraphs(selectedProduct).length">
+              <span class="eyebrow">Detalhes</span>
+              <h2>Informações do produto.</h2>
+              <p v-for="paragraph in productDetailParagraphs(selectedProduct)" :key="paragraph">{{ paragraph }}</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="section" v-else-if="contentReady">
+          <div class="container">
+            <span class="eyebrow">Loja</span>
+            <h1 class="section-title">Produto não encontrado.</h1>
+            <p class="section-copy">O produto pode ter sido removido ou o endereço pode ter mudado.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="loja.html"><i data-lucide="shopping-bag"></i> Ver loja</a>
+              <a class="btn btn-light" href="contato.html"><i data-lucide="message-circle"></i> Falar com o clube</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" v-else>
+          <div class="container">
+            <span class="eyebrow">Loja</span>
+            <h1 class="section-title">Carregando produto.</h1>
+          </div>
+        </section>
+
+        <section class="section-tight shop-section" v-if="selectedProduct && relatedProducts.length">
+          <div class="container">
+            <span class="eyebrow">Mais produtos</span>
+            <h2 class="section-title section-title-sm">Veja também.</h2>
+            <div class="product-grid">
+              <article class="product-card" v-for="product in relatedProducts" :key="'related' + product.name">
+                <a class="product-media" :href="productLink(product)">
+                  <img :src="productImage(product)" :alt="'Produto ' + product.name" @error="fallbackNewsImage" />
+                </a>
+                <div class="product-body">
+                  <h3>{{ product.name }}</h3>
+                  <p>{{ product.description }}</p>
+                  <div class="product-bottom">
+                    <strong>{{ product.price || 'Sob consulta' }}</strong>
+                    <a class="product-buy" :href="productLink(product)">{{ product.buttonText || 'Comprar' }}</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-grid">
+            <div><a class="brand" href="index.html"><img src="assets/tarian-logo.png" alt="" /><span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
+            <div><h3>Clube</h3><div class="footer-links"><a href="clube.html">História</a><a href="elenco.html">Elenco</a><a href="jogos.html">Jogos</a></div></div>
+            <div><h3>Loja</h3><div class="footer-links"><a href="loja.html">Produtos</a><a href="contato.html">Comprar</a><a href="contato.html">Atendimento</a></div></div>
+            <div><h3>Redes</h3><div class="footer-links"><a href="contato.html">Instagram</a><a href="contato.html">YouTube</a><a href="contato.html">TikTok</a></div></div>
+          </div>
+          <div class="footer-bottom"><span>© 2026 Tarian F.C.</span><span>Site institucional oficial</span></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

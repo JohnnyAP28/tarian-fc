@@ -225,15 +225,21 @@
                   <span v-else><i data-lucide="shopping-bag"></i></span>
                 </div>
                 <input v-model="product.name" placeholder="Nome do produto" />
+                <input v-model="product.slug" placeholder="URL do produto (ex: camisa-oficial)" />
                 <input v-model="product.category" placeholder="Categoria" />
                 <input v-model="product.price" placeholder="Preço" />
                 <input v-model="product.badge" placeholder="Etiqueta" />
+                <input v-model="product.sizes" placeholder="Tamanhos" />
+                <input v-model="product.colors" placeholder="Cores" />
+                <input v-model="product.material" placeholder="Material" />
                 <input v-model="product.image" placeholder="URL da imagem" />
                 <input type="file" accept="image/*" @change="uploadImage($event, product, 'image')" />
                 <input v-model="product.buttonText" placeholder="Texto do botão" />
-                <input v-model="product.buyLink" placeholder="Link de compra ou contato" />
+                <input v-model="product.whatsapp" placeholder="WhatsApp de venda com DDD" />
+                <input v-model="product.whatsappMessage" placeholder="Mensagem pronta do WhatsApp" />
                 <label class="admin-check"><input v-model="product.available" type="checkbox" /> Disponível</label>
-                <textarea v-model="product.description" placeholder="Descrição do produto"></textarea>
+                <textarea v-model="product.description" placeholder="Descrição curta do card"></textarea>
+                <textarea v-model="product.details" placeholder="Detalhes completos da página do produto"></textarea>
                 <button class="icon-button danger" type="button" @click="removeItem(editable.products, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
               </div>
             </div>
