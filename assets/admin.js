@@ -7,6 +7,7 @@ const adminApp = Vue.createApp({
         { id: "elenco", label: "Elenco", icon: "users" },
         { id: "jogos", label: "Jogos", icon: "calendar-days" },
         { id: "noticias", label: "Notícias", icon: "newspaper" },
+        { id: "loja", label: "Loja", icon: "shopping-bag" },
         { id: "contato", label: "Contato", icon: "mail" }
       ],
       activeTab: "home",
@@ -125,6 +126,8 @@ const adminApp = Vue.createApp({
         staff: { role: "Cargo", name: "Novo membro", text: "Descrição do trabalho.", photo: "" },
         fixtures: { date: "Data", time: "Hora", opponent: "Adversário", venue: "Local", competition: "Competição", round: "Rodada", status: "Casa", teamLogo: "assets/tarian-logo.png", opponentLogo: "", ticketStatus: "Em definição" },
         news: { tag: "Clube", date: "Data", title: "Nova notícia", slug: "", excerpt: "Resumo da notícia.", text: "Texto da notícia.", image: "assets/tarian-hero.png", imageAlt: "", href: "", cta: "Leia agora" },
+        shopSections: { eyebrow: "Categoria", title: "Nova seção", text: "Descrição da seção.", category: "Categoria" },
+        products: { name: "Novo produto", category: "Categoria", price: "Sob consulta", badge: "", description: "Descrição do produto.", image: "assets/tarian-hero.png", buttonText: "Comprar", buyLink: "contato.html", available: true },
         contacts: { icon: "circle", label: "Novo canal", value: "Informação", href: "" }
       };
       this.editable[type].push(items[type]);
@@ -162,6 +165,31 @@ const adminApp = Vue.createApp({
         text: "",
         photo: "",
         ...person
+      }));
+      if (!Array.isArray(this.editable.shopSections)) {
+        this.editable.shopSections = [];
+      }
+      this.editable.shopSections = this.editable.shopSections.map((section) => ({
+        eyebrow: "Loja",
+        title: "",
+        text: "",
+        category: "",
+        ...section
+      }));
+      if (!Array.isArray(this.editable.products)) {
+        this.editable.products = [];
+      }
+      this.editable.products = this.editable.products.map((product) => ({
+        name: "",
+        category: "",
+        price: "Sob consulta",
+        badge: "",
+        description: "",
+        image: "assets/tarian-hero.png",
+        buttonText: "Comprar",
+        buyLink: "contato.html",
+        available: true,
+        ...product
       }));
     },
     async uploadImage(event, target, field) {

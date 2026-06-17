@@ -40,6 +40,9 @@ const app = Vue.createApp({
       }
       return this.news.filter((item) => this.newsSlug(item) !== this.newsSlug(this.selectedNews)).slice(0, 3);
     },
+    featuredProducts() {
+      return this.products.filter((product) => product.available !== false).slice(0, 3);
+    },
     nextFixture() {
       return this.fixtures[0] || {
         date: "Em breve",
@@ -113,6 +116,24 @@ const app = Vue.createApp({
     },
     newsImage(item) {
       return item.image || "assets/tarian-hero.png";
+    },
+    productImage(product) {
+      return product.image || "assets/tarian-hero.png";
+    },
+    productLink(product) {
+      return product.buyLink || "contato.html";
+    },
+    productTarget(product) {
+      return /^https?:\/\//.test(product.buyLink || "") ? "_blank" : null;
+    },
+    productRel(product) {
+      return this.productTarget(product) ? "noopener noreferrer" : null;
+    },
+    sectionProducts(section) {
+      const category = (section.category || "").trim().toLowerCase();
+      return this.products
+        .filter((product) => product.available !== false)
+        .filter((product) => !category || (product.category || "").trim().toLowerCase() === category);
     },
     slugify(value) {
       return (value || "noticia")

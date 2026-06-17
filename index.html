@@ -29,6 +29,7 @@
             <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
           </nav>
           <div class="header-actions">
+            <a class="icon-button shop-shortcut" href="loja.html" aria-label="Abrir loja"><i data-lucide="shopping-bag"></i></a>
             <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
             <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen">
               <i data-lucide="menu"></i>

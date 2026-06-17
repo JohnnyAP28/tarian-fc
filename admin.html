@@ -200,6 +200,44 @@
               </div>
             </div>
 
+            <div class="admin-panel card" v-show="activeTab === 'loja'">
+              <h2>Loja</h2>
+              <div class="admin-field-grid">
+                <label>Título da página<input v-model="editable.content.loja.pageTitle" /></label>
+                <label>Texto da página<textarea v-model="editable.content.loja.pageText"></textarea></label>
+                <label>Título do catálogo<input v-model="editable.content.loja.sectionTitle" /></label>
+                <label>Texto do catálogo<textarea v-model="editable.content.loja.sectionText"></textarea></label>
+              </div>
+
+              <div class="admin-list-head"><h3>Seções da loja</h3><button class="btn btn-light" type="button" @click="addItem('shopSections')"><i data-lucide="plus"></i> Adicionar seção</button></div>
+              <div class="admin-item shop-section-editor" v-for="(section, index) in editable.shopSections" :key="'shop-section' + index">
+                <input v-model="section.eyebrow" placeholder="Chapéu" />
+                <input v-model="section.title" placeholder="Título da seção" />
+                <input v-model="section.category" placeholder="Categoria vinculada" />
+                <textarea v-model="section.text" placeholder="Descrição"></textarea>
+                <button class="icon-button danger" type="button" @click="removeItem(editable.shopSections, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+
+              <div class="admin-list-head"><h3>Produtos</h3><button class="btn btn-light" type="button" @click="addItem('products')"><i data-lucide="plus"></i> Adicionar produto</button></div>
+              <div class="admin-item product-editor" v-for="(product, index) in editable.products" :key="'product' + index">
+                <div class="admin-player-preview">
+                  <img v-if="product.image" :src="product.image" alt="" />
+                  <span v-else><i data-lucide="shopping-bag"></i></span>
+                </div>
+                <input v-model="product.name" placeholder="Nome do produto" />
+                <input v-model="product.category" placeholder="Categoria" />
+                <input v-model="product.price" placeholder="Preço" />
+                <input v-model="product.badge" placeholder="Etiqueta" />
+                <input v-model="product.image" placeholder="URL da imagem" />
+                <input type="file" accept="image/*" @change="uploadImage($event, product, 'image')" />
+                <input v-model="product.buttonText" placeholder="Texto do botão" />
+                <input v-model="product.buyLink" placeholder="Link de compra ou contato" />
+                <label class="admin-check"><input v-model="product.available" type="checkbox" /> Disponível</label>
+                <textarea v-model="product.description" placeholder="Descrição do produto"></textarea>
+                <button class="icon-button danger" type="button" @click="removeItem(editable.products, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
             <div class="admin-panel card" v-show="activeTab === 'contato'">
               <h2>Contato</h2>
               <div class="admin-field-grid">

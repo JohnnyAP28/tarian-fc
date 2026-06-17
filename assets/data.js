@@ -26,6 +26,11 @@ const tarianDefaults = {
       "id": "noticias"
     },
     {
+      "href": "loja.html",
+      "label": "Loja",
+      "id": "loja"
+    },
+    {
       "href": "contato.html",
       "label": "Contato",
       "id": "contato"
@@ -62,6 +67,12 @@ const tarianDefaults = {
       "pageTitle": "Informação oficial para torcida, imprensa e parceiros.",
       "pageText": "Bastidores, comunicados, preparação, resultados e projetos do Tarian F.C. reunidos em um só lugar.",
       "sectionTitle": "Últimas publicações."
+    },
+    "loja": {
+      "pageTitle": "Loja oficial do Tarian F.C.",
+      "pageText": "Produtos do clube para torcida, treinos e dias de jogo.",
+      "sectionTitle": "Catálogo oficial.",
+      "sectionText": "Escolha uma categoria, confira os detalhes e fale com o clube para comprar."
     },
     "contato": {
       "pageTitle": "Vamos conversar sobre futebol, torcida e parcerias.",
@@ -103,6 +114,83 @@ const tarianDefaults = {
       "icon": "users",
       "title": "Formação local",
       "text": "Valorizamos atletas da região e abrimos espaço para novos talentos crescerem dentro do clube."
+    }
+  ],
+  "shopSections": [
+    {
+      "eyebrow": "Uniformes",
+      "title": "Camisas e kits de jogo.",
+      "text": "Peças para vestir o Tarian F.C. em treinos, arquibancada e dias de partida.",
+      "category": "Uniformes"
+    },
+    {
+      "eyebrow": "Treino",
+      "title": "Linha de treino.",
+      "text": "Produtos para rotina de atletas, comissão e torcedores que vivem futebol.",
+      "category": "Treino"
+    },
+    {
+      "eyebrow": "Acessórios",
+      "title": "Detalhes para completar o kit.",
+      "text": "Itens úteis para jogo, arquibancada e uso no dia a dia.",
+      "category": "Acessórios"
+    }
+  ],
+  "products": [
+    {
+      "name": "Camisa oficial Tarian F.C.",
+      "category": "Uniformes",
+      "price": "R$ 129,90",
+      "badge": "Mais pedido",
+      "description": "Camisa principal do clube com escudo aplicado e tecido leve.",
+      "image": "assets/tarian-hero.png",
+      "buttonText": "Comprar",
+      "buyLink": "contato.html",
+      "available": true
+    },
+    {
+      "name": "Bermuda de treino",
+      "category": "Treino",
+      "price": "R$ 79,90",
+      "badge": "Treino",
+      "description": "Bermuda confortável para treino, academia e uso diário.",
+      "image": "assets/tarian-hero.png",
+      "buttonText": "Comprar",
+      "buyLink": "contato.html",
+      "available": true
+    },
+    {
+      "name": "Chuteira campo",
+      "category": "Treino",
+      "price": "Sob consulta",
+      "badge": "Campo",
+      "description": "Modelo para gramado natural, indicado para rotina de jogos.",
+      "image": "assets/tarian-hero.png",
+      "buttonText": "Consultar",
+      "buyLink": "contato.html",
+      "available": true
+    },
+    {
+      "name": "Meião Tarian",
+      "category": "Uniformes",
+      "price": "R$ 34,90",
+      "badge": "Kit",
+      "description": "Meião esportivo para completar o uniforme do clube.",
+      "image": "assets/tarian-hero.png",
+      "buttonText": "Comprar",
+      "buyLink": "contato.html",
+      "available": true
+    },
+    {
+      "name": "Garrafa da torcida",
+      "category": "Acessórios",
+      "price": "R$ 39,90",
+      "badge": "Torcida",
+      "description": "Garrafa personalizada para jogos, treino e arquibancada.",
+      "image": "assets/tarian-hero.png",
+      "buttonText": "Comprar",
+      "buyLink": "contato.html",
+      "available": true
     }
   ],
   "players": [
@@ -514,7 +602,17 @@ function mergeTarianData(base, remote) {
   Object.keys(remote).forEach((key) => {
     const value = remote[key];
     if (Array.isArray(value)) {
-      output[key] = value;
+      if (key === "navItems" && Array.isArray(base[key])) {
+        const byId = new Map(value.map((item) => [item.id, item]));
+        output[key] = [...value];
+        base[key].forEach((item) => {
+          if (!byId.has(item.id)) {
+            output[key].push(item);
+          }
+        });
+      } else {
+        output[key] = value;
+      }
     } else if (value && typeof value === "object" && base[key] && typeof base[key] === "object" && !Array.isArray(base[key])) {
       output[key] = mergeTarianData(base[key], value);
     } else if (value !== undefined) {
