@@ -81,6 +81,28 @@ const app = Vue.createApp({
         .join("")
         .toUpperCase();
     },
+    newsImage(item) {
+      return item.image || "assets/tarian-hero.png";
+    },
+    newsExcerpt(item) {
+      const text = item.excerpt || item.text || "";
+      return text.length > 150 ? `${text.slice(0, 147).trim()}...` : text;
+    },
+    newsLink(item) {
+      return item.href || "noticias.html";
+    },
+    newsTarget(item) {
+      return /^https?:\/\//.test(item.href || "") ? "_blank" : null;
+    },
+    newsRel(item) {
+      return this.newsTarget(item) ? "noopener noreferrer" : null;
+    },
+    fallbackNewsImage(event) {
+      if (event.target.src.includes("assets/tarian-hero.png")) {
+        return;
+      }
+      event.target.src = "assets/tarian-hero.png";
+    },
     playerInitials(name) {
       return (name || "TFC")
         .split(" ")

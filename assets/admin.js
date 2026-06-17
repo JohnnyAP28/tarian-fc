@@ -123,7 +123,7 @@ const adminApp = Vue.createApp({
         timeline: { year: "2026", title: "Novo marco", text: "Descrição do marco." },
         players: { id: this.uid("player"), number: "", name: "Novo jogador", position: "", photo: "", age: "", matches: "", goals: "" },
         fixtures: { date: "Data", time: "Hora", opponent: "Adversário", venue: "Local", competition: "Competição", round: "Rodada", status: "Casa", teamLogo: "assets/tarian-logo.png", opponentLogo: "", ticketStatus: "Em definição" },
-        news: { tag: "Clube", date: "Data", title: "Nova notícia", text: "Texto da notícia." },
+        news: { tag: "Clube", date: "Data", title: "Nova notícia", excerpt: "Resumo da notícia.", text: "Texto da notícia.", image: "assets/tarian-hero.png", imageAlt: "", href: "", cta: "Leia agora" },
         contacts: { icon: "circle", label: "Novo canal", value: "Informação", href: "" }
       };
       this.editable[type].push(items[type]);
@@ -139,6 +139,17 @@ const adminApp = Vue.createApp({
         round: "",
         ticketStatus: "Em definição",
         ...match
+      }));
+      if (!Array.isArray(this.editable.news)) {
+        this.editable.news = [];
+      }
+      this.editable.news = this.editable.news.map((item) => ({
+        image: "assets/tarian-hero.png",
+        imageAlt: "",
+        excerpt: item.text || "",
+        href: "",
+        cta: "Leia agora",
+        ...item
       }));
     },
     removeItem(list, index) {

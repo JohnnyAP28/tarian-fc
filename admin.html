@@ -171,11 +171,16 @@
                 <label>Título da lista<input v-model="editable.content.noticias.sectionTitle" /></label>
               </div>
               <div class="admin-list-head"><h3>Publicações</h3><button class="btn btn-light" type="button" @click="addItem('news')"><i data-lucide="plus"></i> Adicionar</button></div>
-              <div class="admin-item tall" v-for="(item, index) in editable.news" :key="'news' + index">
+              <div class="admin-item news-editor" v-for="(item, index) in editable.news" :key="'news' + index">
                 <input v-model="item.tag" placeholder="Categoria" />
                 <input v-model="item.date" placeholder="Data" />
                 <input v-model="item.title" placeholder="Título" />
-                <textarea v-model="item.text" placeholder="Texto"></textarea>
+                <input v-model="item.image" placeholder="URL da imagem" />
+                <input v-model="item.imageAlt" placeholder="Descrição da imagem" />
+                <input v-model="item.href" placeholder="Link do botão" />
+                <input v-model="item.cta" placeholder="Texto do botão" />
+                <textarea v-model="item.excerpt" placeholder="Resumo exibido no card"></textarea>
+                <textarea v-model="item.text" placeholder="Texto completo ou observação"></textarea>
                 <button class="icon-button danger" type="button" @click="removeItem(editable.news, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
               </div>
             </div>

@@ -104,6 +104,27 @@
           </div>
         </section>
 
+        <section class="section news-section">
+          <div class="container">
+            <span class="eyebrow">Notícias</span>
+            <h2 class="section-title">Últimas do Tarian.</h2>
+            <div class="news-grid news-grid-home">
+              <article class="news-card" v-for="item in featuredNews" :key="item.title">
+                <a class="news-media" :href="newsLink(item)" :target="newsTarget(item)" :rel="newsRel(item)">
+                  <img :src="newsImage(item)" :alt="item.imageAlt || item.title" @error="fallbackNewsImage" />
+                  <span class="news-tag">{{ item.tag || 'Clube' }}</span>
+                </a>
+                <div class="news-body">
+                  <span class="news-date">{{ item.date }}</span>
+                  <h3>{{ item.title }}</h3>
+                  <p>{{ newsExcerpt(item) }}</p>
+                  <a class="news-read" :href="newsLink(item)" :target="newsTarget(item)" :rel="newsRel(item)">{{ item.cta || 'Leia agora' }}</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section class="section">
           <div class="container">
             <div>
@@ -127,23 +148,6 @@
                 <div class="feature-icon"><i :data-lucide="item.icon"></i></div>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.text }}</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="container">
-            <span class="eyebrow">Notícias</span>
-            <h2 class="section-title">Últimas do Tarian.</h2>
-            <div class="grid-3">
-              <article class="card news-card" v-for="item in featuredNews" :key="item.title">
-                <div class="news-media"><span class="news-tag">{{ item.tag }}</span></div>
-                <div class="news-body">
-                  <span class="news-date">{{ item.date }}</span>
-                  <h3>{{ item.title }}</h3>
-                  <p>{{ item.text }}</p>
-                </div>
               </article>
             </div>
           </div>

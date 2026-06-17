@@ -376,10 +376,20 @@ const tarianDefaults = {
       "date": "16 Jun 2026",
       "tag": "Clube",
       "title": "Tarian F.C. apresenta nova identidade para a temporada",
+      "image": "assets/tarian-hero.png",
+      "imageAlt": "Campo iluminado do Tarian F.C.",
+      "excerpt": "O verde e dourado marcam uma fase de crescimento, com foco em desempenho, torcida e estrutura.",
+      "href": "noticias.html",
+      "cta": "Leia agora",
       "text": "O verde e dourado marcam uma fase de crescimento, com foco em desempenho, torcida e estrutura."
     },
     {
       "title": "Comissão técnica confirma planejamento para a sequência",
+      "image": "assets/tarian-hero.png",
+      "imageAlt": "Treino do Tarian F.C.",
+      "excerpt": "Treinos integrados e análise de adversários fazem parte da preparação para os próximos desafios.",
+      "href": "noticias.html",
+      "cta": "Leia agora",
       "text": "Treinos integrados e análise de adversários fazem parte da preparação para os próximos desafios.",
       "date": "14 Jun 2026",
       "tag": "Elenco"
@@ -388,15 +398,30 @@ const tarianDefaults = {
       "date": "10 Jun 2026",
       "tag": "Base",
       "title": "Projeto de formação abre observação para jovens atletas",
+      "image": "assets/tarian-hero.png",
+      "imageAlt": "Base do Tarian F.C. em preparação",
+      "excerpt": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com o Tarian.",
+      "href": "noticias.html",
+      "cta": "Leia agora",
       "text": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com o Tarian."
     },
     {
       "tag": "Torcida",
       "date": "06 Jun 2026",
+      "image": "assets/tarian-hero.png",
+      "imageAlt": "Torcida do Tarian F.C.",
+      "excerpt": "O clube prepara uma experiência mais organizada para quem acompanha o time em casa.",
+      "href": "noticias.html",
+      "cta": "Leia agora",
       "text": "O clube prepara uma experiência mais organizada para quem acompanha o time em casa.",
       "title": "Tarian Arena terá setor dedicado a sócios e famílias"
     },
     {
+      "image": "assets/tarian-hero.png",
+      "imageAlt": "Análise de performance do Tarian F.C.",
+      "excerpt": "A equipe usa indicadores simples para evoluir posse, finalizações e retomada de bola.",
+      "href": "noticias.html",
+      "cta": "Leia agora",
       "text": "A equipe usa indicadores simples para evoluir posse, finalizações e retomada de bola.",
       "title": "Dados de jogo orientam ajustes para manter intensidade",
       "tag": "Performance",
@@ -406,6 +431,11 @@ const tarianDefaults = {
       "date": "28 Mai 2026",
       "tag": "Comunidade",
       "title": "Clube anuncia calendário de ações sociais no bairro",
+      "image": "assets/tarian-hero.png",
+      "imageAlt": "Ações sociais do Tarian F.C.",
+      "excerpt": "Eventos com escolas e projetos locais reforçam o compromisso do Tarian F.C. fora de campo.",
+      "href": "noticias.html",
+      "cta": "Leia agora",
       "text": "Eventos com escolas e projetos locais reforçam o compromisso do Tarian F.C. fora de campo."
     }
   ],
