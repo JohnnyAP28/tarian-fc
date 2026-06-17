@@ -51,16 +51,18 @@
             <span class="eyebrow">Jogadores</span>
             <h2 class="section-title">{{ content.elenco.sectionTitle }}</h2>
             <p class="section-copy">{{ content.elenco.sectionText }}</p>
-            <div class="grid-4">
-              <article class="card player-card" v-for="player in players" :key="player.number">
-                <div class="player-photo">
-                  <img v-if="player.photo" :src="player.photo" :alt="'Foto de ' + player.name" />
-                  <div v-else class="player-photo-fallback">{{ playerInitials(player.name) }}</div>
-                  <div class="shirt-number">#{{ player.number }}</div>
-                </div>
-                <div class="player-body">
-                  <h3>{{ player.name }}</h3>
-                  <span class="player-position">{{ player.position }}</span>
+            <div class="player-catalog-grid">
+              <article class="player-card" v-for="player in catalogPlayers" :key="player.id || player.number">
+                <div class="player-card-inner" :class="{ 'is-empty': player.empty }">
+                  <div class="player-card-top">
+                    <span class="player-card-number">{{ player.number || '--' }}</span>
+                    <span class="player-card-position">{{ player.position || 'Elenco' }}</span>
+                  </div>
+                  <div class="player-card-photo">
+                    <img v-if="player.photo" :src="player.photo" :alt="'Foto de ' + player.name" />
+                    <div v-else class="player-photo-fallback">{{ player.empty ? '+' : playerInitials(player.name) }}</div>
+                  </div>
+                  <div class="player-card-name">{{ player.name }}</div>
                 </div>
               </article>
             </div>

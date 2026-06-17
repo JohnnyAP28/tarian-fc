@@ -77,7 +77,19 @@ const tarianDefaults = {
     { id: "p5", number: 10, name: "Mateus Rocha", position: "Meia", photo: "", age: 24, matches: 20, goals: 7 },
     { id: "p6", number: 11, name: "Bruno Sales", position: "Atacante", photo: "", age: 22, matches: 21, goals: 12 },
     { id: "p7", number: 17, name: "Diego Almeida", position: "Ponta", photo: "", age: 26, matches: 16, goals: 5 },
-    { id: "p8", number: 23, name: "Vitor Lima", position: "Atacante", photo: "", age: 20, matches: 14, goals: 6 }
+    { id: "p8", number: 23, name: "Vitor Lima", position: "Atacante", photo: "", age: 20, matches: 14, goals: 6 },
+    { id: "p9", number: 2, name: "Henrique Alves", position: "Lateral", photo: "", age: 21, matches: 12, goals: 0 },
+    { id: "p10", number: 3, name: "Samuel Costa", position: "Zagueiro", photo: "", age: 29, matches: 17, goals: 1 },
+    { id: "p11", number: 5, name: "André Campos", position: "Volante", photo: "", age: 26, matches: 18, goals: 2 },
+    { id: "p12", number: 7, name: "Felipe Araujo", position: "Ponta", photo: "", age: 24, matches: 15, goals: 4 },
+    { id: "p13", number: 9, name: "João Pedro", position: "Centroavante", photo: "", age: 27, matches: 19, goals: 10 },
+    { id: "p14", number: 12, name: "Murilo Santos", position: "Goleiro", photo: "", age: 22, matches: 7, goals: 0 },
+    { id: "p15", number: 14, name: "Gustavo Leal", position: "Meia", photo: "", age: 23, matches: 13, goals: 3 },
+    { id: "p16", number: 15, name: "Renan Dias", position: "Zagueiro", photo: "", age: 25, matches: 11, goals: 1 },
+    { id: "p17", number: 18, name: "Igor Martins", position: "Atacante", photo: "", age: 20, matches: 9, goals: 3 },
+    { id: "p18", number: 19, name: "Daniel Vieira", position: "Volante", photo: "", age: 28, matches: 16, goals: 1 },
+    { id: "p19", number: 21, name: "Nicolas Freitas", position: "Lateral", photo: "", age: 19, matches: 8, goals: 0 },
+    { id: "p20", number: 30, name: "Eduardo Ramos", position: "Meia", photo: "", age: 24, matches: 10, goals: 2 }
   ],
   staff: [
     { role: "Treinador", name: "Marcos Tavares", text: "Comanda o modelo de jogo e o desenvolvimento do elenco principal." },

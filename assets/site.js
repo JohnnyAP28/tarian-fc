@@ -25,6 +25,23 @@ const app = Vue.createApp({
     },
     featuredNews() {
       return this.news.slice(0, 3);
+    },
+    catalogPlayers() {
+      const players = this.players.slice(0, 20).map((player, index) => ({
+        id: player.id || `player-${index}`,
+        ...player
+      }));
+      while (players.length < 20) {
+        players.push({
+          id: `empty-${players.length}`,
+          number: "",
+          name: "Disponível",
+          position: "Elenco",
+          photo: "",
+          empty: true
+        });
+      }
+      return players;
     }
   },
   methods: {
