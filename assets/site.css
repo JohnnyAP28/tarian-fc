@@ -1269,7 +1269,13 @@ tr:last-child td {
 }
 
 .shop-featured-section {
-  padding-bottom: 42px;
+  padding-top: 48px;
+  padding-bottom: 30px;
+}
+
+.shop-section {
+  padding-top: 42px;
+  padding-bottom: 34px;
 }
 
 .shop-section:nth-of-type(even) {
@@ -1281,10 +1287,10 @@ tr:last-child td {
   grid-auto-columns: calc((100% - 80px) / 6);
   grid-auto-flow: column;
   gap: 16px;
-  margin-top: 22px;
+  margin-top: 16px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
-  padding: 2px 2px 18px;
+  padding: 2px 2px 10px;
   scroll-padding-inline: 2px;
   scroll-snap-type: inline mandatory;
   scrollbar-width: thin;
@@ -1318,19 +1324,6 @@ tr:last-child td {
 .product-card:hover .product-media img,
 .product-card:focus-within .product-media img {
   transform: scale(1.06);
-}
-
-.product-media span {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  border-radius: 999px;
-  background: var(--gold-500);
-  color: #1f2b12;
-  font-size: 0.7rem;
-  font-weight: 950;
-  padding: 7px 10px;
-  text-transform: uppercase;
 }
 
 .product-body {
@@ -2025,30 +2018,23 @@ tr:last-child td {
   }
 
   .product-grid {
-    grid-auto-columns: calc((100% - 24px) / 4);
+    grid-auto-columns: calc((100% - 16px) / 3);
     gap: 8px;
-    margin-top: 14px;
-    padding-bottom: 12px;
-  }
-
-  .product-media span {
-    left: 6px;
-    bottom: 6px;
-    font-size: 0.48rem;
-    padding: 4px 5px;
+    margin-top: 12px;
+    padding-bottom: 8px;
   }
 
   .product-body {
-    padding: 8px;
+    padding: 9px;
   }
 
   .product-category {
-    font-size: 0.5rem;
+    font-size: 0.56rem;
   }
 
   .product-card h3 {
-    min-height: 26px;
-    font-size: 0.62rem;
+    min-height: 32px;
+    font-size: 0.76rem;
     line-height: 1.08;
   }
 
@@ -2060,19 +2046,29 @@ tr:last-child td {
     align-items: stretch;
     flex-direction: column;
     gap: 6px;
-    margin-top: 8px;
+    margin-top: 9px;
   }
 
   .product-bottom strong {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   .product-buy {
-    min-height: 26px;
+    min-height: 28px;
     width: 100%;
     justify-content: center;
-    font-size: 0.58rem;
-    padding: 6px 5px;
+    font-size: 0.66rem;
+    padding: 6px;
+  }
+
+  .shop-featured-section {
+    padding-top: 30px;
+    padding-bottom: 22px;
+  }
+
+  .shop-section {
+    padding-top: 28px;
+    padding-bottom: 24px;
   }
 
   .match-rail {

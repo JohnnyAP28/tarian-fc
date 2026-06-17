@@ -61,10 +61,8 @@
               <article class="product-card" v-for="product in featuredProducts" :key="'featured' + product.name">
                 <a class="product-media" :href="productLink(product)" :target="productTarget(product)" :rel="productRel(product)">
                   <img :src="productImage(product)" :alt="'Produto ' + product.name" @error="fallbackNewsImage" />
-                  <span v-if="product.badge">{{ product.badge }}</span>
                 </a>
                 <div class="product-body">
-                  <div class="product-category">{{ product.category || 'Produto' }}</div>
                   <h3>{{ product.name }}</h3>
                   <p>{{ product.description }}</p>
                   <div class="product-bottom">
@@ -86,10 +84,8 @@
               <article class="product-card" v-for="product in sectionProducts(section)" :key="section.title + product.name">
                 <a class="product-media" :href="productLink(product)" :target="productTarget(product)" :rel="productRel(product)">
                   <img :src="productImage(product)" :alt="'Produto ' + product.name" @error="fallbackNewsImage" />
-                  <span v-if="product.badge">{{ product.badge }}</span>
                 </a>
                 <div class="product-body">
-                  <div class="product-category">{{ product.category || 'Produto' }}</div>
                   <h3>{{ product.name }}</h3>
                   <p>{{ product.description }}</p>
                   <div class="product-bottom">
