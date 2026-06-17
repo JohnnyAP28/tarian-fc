@@ -41,7 +41,7 @@ const app = Vue.createApp({
       return this.news.filter((item) => this.newsSlug(item) !== this.newsSlug(this.selectedNews)).slice(0, 3);
     },
     featuredProducts() {
-      return this.products.filter((product) => product.available !== false).slice(0, 3);
+      return this.products.filter((product) => product.available !== false).slice(0, 6);
     },
     nextFixture() {
       return this.fixtures[0] || {
