@@ -26,11 +26,23 @@ const app = Vue.createApp({
     featuredNews() {
       return this.news.slice(0, 3);
     },
+    coachCatalogCard() {
+      const coach = this.staff.find((person) => (person.role || "").toLowerCase().includes("treinador")) || this.staff[0] || {};
+      return {
+        id: "coach-card",
+        number: "T",
+        name: coach.name || "Treinador",
+        position: coach.role || "Treinador",
+        photo: coach.photo || "",
+        isCoach: true
+      };
+    },
     catalogPlayers() {
-      const players = this.players.slice(0, 20).map((player, index) => ({
+      const roster = this.players.slice(0, 19).map((player, index) => ({
         id: player.id || `player-${index}`,
         ...player
       }));
+      const players = [this.coachCatalogCard, ...roster];
       while (players.length < 20) {
         players.push({
           id: `empty-${players.length}`,

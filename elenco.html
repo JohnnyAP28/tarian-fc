@@ -53,7 +53,7 @@
             <p class="section-copy">{{ content.elenco.sectionText }}</p>
             <div class="player-catalog-grid">
               <article class="player-card" v-for="player in catalogPlayers" :key="player.id || player.number">
-                <div class="player-card-inner" :class="{ 'is-empty': player.empty }">
+                <div class="player-card-inner" :class="{ 'is-empty': player.empty, 'is-coach': player.isCoach }">
                   <div class="player-card-top">
                     <span class="player-card-number">{{ player.number || '--' }}</span>
                     <span class="player-card-position">{{ player.position || 'Elenco' }}</span>

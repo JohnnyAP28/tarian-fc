@@ -23,6 +23,20 @@ const adminApp = Vue.createApp({
   computed: {
     currentTabLabel() {
       return this.tabs.find((tab) => tab.id === this.activeTab)?.label || "Editor";
+    },
+    primaryCoach() {
+      if (!Array.isArray(this.editable.staff)) {
+        this.editable.staff = [];
+      }
+      let coach = this.editable.staff.find((person) => (person.role || "").toLowerCase().includes("treinador"));
+      if (!coach) {
+        coach = { role: "Treinador", name: "Treinador", text: "", photo: "" };
+        this.editable.staff.unshift(coach);
+      }
+      if (coach.photo === undefined) {
+        coach.photo = "";
+      }
+      return coach;
     }
   },
   methods: {

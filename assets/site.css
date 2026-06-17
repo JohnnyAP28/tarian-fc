@@ -657,6 +657,13 @@ h3,
   opacity: 0.78;
 }
 
+.player-card-inner.is-coach {
+  border-color: rgba(255, 255, 255, 0.86);
+  background:
+    linear-gradient(145deg, #fff8df, var(--gold-500) 34%, #0b448f 35%, #032b66 70%, var(--green-950)),
+    url("tarian-hero.png") center / cover no-repeat;
+}
+
 .player-card-top {
   position: relative;
   z-index: 1;
@@ -1273,6 +1280,10 @@ tr:last-child td {
   grid-template-columns: 74px minmax(180px, 1.1fr) 92px 130px minmax(220px, 1.2fr) 46px;
 }
 
+.admin-item.coach-editor {
+  grid-template-columns: 74px minmax(180px, 1fr) 150px minmax(220px, 1.3fr);
+}
+
 .admin-item.match-editor {
   grid-template-columns: 90px 90px minmax(150px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr) 100px 46px;
 }
@@ -1376,6 +1387,7 @@ tr:last-child td {
   .admin-item,
   .admin-item.tall,
   .admin-item.player-editor,
+  .admin-item.coach-editor,
   .admin-item.match-editor {
     grid-template-columns: 1fr;
   }

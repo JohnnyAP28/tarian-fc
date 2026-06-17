@@ -115,6 +115,16 @@
                 <label>Título do catálogo<input v-model="editable.content.elenco.sectionTitle" /></label>
                 <label>Texto do catálogo<textarea v-model="editable.content.elenco.sectionText"></textarea></label>
               </div>
+              <div class="admin-list-head"><h3>Treinador no catálogo</h3></div>
+              <div class="admin-item coach-editor">
+                <div class="admin-player-preview">
+                  <img v-if="primaryCoach.photo" :src="primaryCoach.photo" alt="" />
+                  <span v-else>T</span>
+                </div>
+                <input v-model="primaryCoach.name" placeholder="Nome do treinador" />
+                <input v-model="primaryCoach.role" placeholder="Cargo" />
+                <input v-model="primaryCoach.photo" placeholder="URL da foto" />
+              </div>
               <div class="admin-list-head"><h3>Jogadores</h3><button class="btn btn-light" type="button" @click="addItem('players')"><i data-lucide="plus"></i> Adicionar jogador</button></div>
               <div class="admin-item player-editor" v-for="(player, index) in editable.players" :key="player.id || index">
                 <div class="admin-player-preview">
