@@ -30,10 +30,35 @@ const adminApp = Vue.createApp({
       return `${prefix}-${Date.now()}-${Math.random().toString(16).slice(2)}`;
     },
     async login() {
-      await this.runAuth(() => window.TarianCMS.signIn(this.auth.email, this.auth.password), "Acesso confirmado.");
+      if (!this.validateAuth()) {
+        return;
+      }
+      await this.runAuth(() => window.TarianCMS.signIn(this.auth.email.trim(), this.auth.password), "Acesso confirmado.");
     },
     async register() {
-      await this.runAuth(() => window.TarianCMS.signUp(this.auth.email, this.auth.password), "Acesso criado.");
+      if (!this.validateAuth()) {
+        return;
+      }
+      await this.runAuth(() => window.TarianCMS.signUp(this.auth.email.trim(), this.auth.password), "Acesso criado.");
+    },
+    validateAuth() {
+      const email = this.auth.email.trim();
+      const password = this.auth.password;
+      const emailLooksValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (!emailLooksValid) {
+        this.message = "Digite um e-mail válido para criar ou entrar.";
+        this.$nextTick(() => document.querySelector("#email")?.focus());
+        return false;
+      }
+
+      if (!password || password.length < 6) {
+        this.message = "A senha precisa ter pelo menos 6 caracteres.";
+        this.$nextTick(() => document.querySelector("#password")?.focus());
+        return false;
+      }
+
+      return true;
     },
     async runAuth(action, successMessage) {
       this.busy = true;
@@ -95,7 +120,16 @@ const adminApp = Vue.createApp({
     friendlyError(error) {
       const code = error?.code || "";
       if (code.includes("auth/unauthorized-domain")) {
-        return "Domínio não autorizado no Firebase Auth.";
+        return "Domínio da Vercel não autorizado no Firebase Auth. Adicione tarian-fc.vercel.app nos domínios autorizados.";
+      }
+      if (code.includes("auth/invalid-email")) {
+        return "Digite um e-mail válido para criar ou entrar.";
+      }
+      if (code.includes("auth/weak-password")) {
+        return "A senha precisa ter pelo menos 6 caracteres.";
+      }
+      if (code.includes("auth/operation-not-allowed")) {
+        return "Ative o login por e-mail e senha no Firebase Authentication.";
       }
       if (code.includes("auth/invalid-credential") || code.includes("auth/wrong-password")) {
         return "E-mail ou senha inválidos.";
