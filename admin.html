@@ -124,6 +124,20 @@
                 <input v-model="primaryCoach.name" placeholder="Nome do treinador" />
                 <input v-model="primaryCoach.role" placeholder="Cargo" />
                 <input v-model="primaryCoach.photo" placeholder="URL da foto" />
+                <input type="file" accept="image/*" @change="uploadImage($event, primaryCoach, 'photo')" />
+              </div>
+              <div class="admin-list-head"><h3>Comissão técnica</h3><button class="btn btn-light" type="button" @click="addItem('staff')"><i data-lucide="plus"></i> Adicionar membro</button></div>
+              <div class="admin-item staff-editor" v-for="(person, index) in editable.staff" :key="'staff' + index">
+                <div class="admin-player-preview">
+                  <img v-if="person.photo" :src="person.photo" alt="" />
+                  <span v-else>{{ person.name ? person.name.slice(0, 1) : 'T' }}</span>
+                </div>
+                <input v-model="person.name" placeholder="Nome" />
+                <input v-model="person.role" placeholder="Cargo" />
+                <input v-model="person.photo" placeholder="URL da foto" />
+                <input type="file" accept="image/*" @change="uploadImage($event, person, 'photo')" />
+                <textarea v-model="person.text" placeholder="Descrição"></textarea>
+                <button class="icon-button danger" type="button" @click="removeItem(editable.staff, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
               </div>
               <div class="admin-list-head"><h3>Jogadores</h3><button class="btn btn-light" type="button" @click="addItem('players')"><i data-lucide="plus"></i> Adicionar jogador</button></div>
               <div class="admin-item player-editor" v-for="(player, index) in editable.players" :key="player.id || index">

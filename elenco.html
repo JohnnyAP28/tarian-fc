@@ -75,9 +75,15 @@
             <h2 class="section-title">Equipe que prepara o jogo.</h2>
             <div class="grid-3">
               <article class="card staff-card" v-for="person in staff" :key="person.name">
-                <span class="news-tag">{{ person.role }}</span>
-                <h3>{{ person.name }}</h3>
-                <p>{{ person.text }}</p>
+                <div class="staff-info">
+                  <span class="news-tag">{{ person.role }}</span>
+                  <h3>{{ person.name }}</h3>
+                  <p>{{ person.text }}</p>
+                </div>
+                <div class="staff-photo">
+                  <img v-if="person.photo" :src="person.photo" :alt="'Foto de ' + person.name" />
+                  <span v-else>{{ playerInitials(person.name) }}</span>
+                </div>
               </article>
             </div>
           </div>
