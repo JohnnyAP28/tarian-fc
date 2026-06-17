@@ -87,7 +87,7 @@ h3,
 
 .header-inner {
   display: flex;
-  min-height: 76px;
+  min-height: 82px;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
@@ -101,8 +101,9 @@ h3,
 }
 
 .brand img {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
 .brand-title {
@@ -1390,8 +1391,8 @@ tr:last-child td {
   }
 
   .brand img {
-    width: 42px;
-    height: 42px;
+    width: 54px;
+    height: 54px;
   }
 
   .brand-subtitle {
