@@ -153,8 +153,12 @@
                 <input v-model="match.time" placeholder="Hora" />
                 <input v-model="match.opponent" placeholder="Adversário" />
                 <input v-model="match.competition" placeholder="Competição" />
+                <input v-model="match.round" placeholder="Rodada" />
                 <input v-model="match.venue" placeholder="Local" />
                 <select v-model="match.status"><option>Casa</option><option>Fora</option></select>
+                <input v-model="match.teamLogo" placeholder="URL logo Tarian" />
+                <input v-model="match.opponentLogo" placeholder="URL logo adversário" />
+                <input v-model="match.ticketStatus" placeholder="Status do jogo" />
                 <button class="icon-button danger" type="button" @click="removeItem(editable.fixtures, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>
               </div>
             </div>

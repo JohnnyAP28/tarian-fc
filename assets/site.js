@@ -60,6 +60,27 @@ const app = Vue.createApp({
     isActive(id) {
       return this.currentPage === id;
     },
+    matchHomeName(match) {
+      return match.status === "Fora" ? match.opponent || "Adversário" : "Tarian F.C.";
+    },
+    matchAwayName(match) {
+      return match.status === "Fora" ? "Tarian F.C." : match.opponent || "Adversário";
+    },
+    matchHomeLogo(match) {
+      return match.status === "Fora" ? match.opponentLogo || "" : match.teamLogo || "assets/tarian-logo.png";
+    },
+    matchAwayLogo(match) {
+      return match.status === "Fora" ? match.teamLogo || "assets/tarian-logo.png" : match.opponentLogo || "";
+    },
+    teamInitials(name) {
+      return (name || "FC")
+        .split(" ")
+        .filter(Boolean)
+        .slice(0, 2)
+        .map((part) => part[0])
+        .join("")
+        .toUpperCase();
+    },
     playerInitials(name) {
       return (name || "TFC")
         .split(" ")

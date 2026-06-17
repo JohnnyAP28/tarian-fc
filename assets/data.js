@@ -329,6 +329,10 @@ const tarianDefaults = {
   ],
   "fixtures": [
     {
+      "teamLogo": "assets/tarian-logo.png",
+      "opponentLogo": "",
+      "round": "",
+      "ticketStatus": "Em definição",
       "date": "22 JUN",
       "time": "16:00",
       "opponent": "Atlético Vale",

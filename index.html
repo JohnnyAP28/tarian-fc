@@ -66,8 +66,46 @@
           </div>
         </section>
 
+        <section class="section upcoming-section">
+          <div class="container">
+            <div class="section-heading-row">
+              <div>
+                <span class="eyebrow">Próximos jogos</span>
+                <h2 class="section-title section-title-sm">Calendário do Tarian.</h2>
+              </div>
+              <a class="btn btn-light section-heading-action" href="jogos.html"><i data-lucide="calendar-days"></i> Ver calendário</a>
+            </div>
+            <div class="match-rail" aria-label="Próximos jogos do Tarian F.C.">
+              <article class="upcoming-card" v-for="match in fixtures" :key="match.date + match.opponent + match.competition">
+                <div class="upcoming-card-head">
+                  <span>{{ match.status || 'Casa' }}</span>
+                  <strong>{{ match.competition || 'Próximo jogo' }}</strong>
+                </div>
+                <p class="upcoming-round">{{ match.round || 'Rodada em definição' }}</p>
+                <div class="upcoming-teams">
+                  <div class="upcoming-logo">
+                    <img v-if="matchHomeLogo(match)" :src="matchHomeLogo(match)" :alt="'Logo ' + matchHomeName(match)" />
+                    <span v-else>{{ teamInitials(matchHomeName(match)) }}</span>
+                  </div>
+                  <b>vs</b>
+                  <div class="upcoming-logo">
+                    <img v-if="matchAwayLogo(match)" :src="matchAwayLogo(match)" :alt="'Logo ' + matchAwayName(match)" />
+                    <span v-else>{{ teamInitials(matchAwayName(match)) }}</span>
+                  </div>
+                </div>
+                <h3>{{ matchHomeName(match) }} vs {{ matchAwayName(match) }}</h3>
+                <div class="upcoming-meta">
+                  <span><i data-lucide="map-pin"></i> {{ match.venue || 'Local a definir' }}</span>
+                  <span><i data-lucide="calendar"></i> {{ match.date || 'Data a definir' }} <template v-if="match.time">· {{ match.time }}</template></span>
+                </div>
+                <span class="upcoming-status">{{ match.ticketStatus || 'Em definição' }}</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section class="section">
-          <div class="container grid-2">
+          <div class="container">
             <div>
               <span class="eyebrow">O clube</span>
               <h2 class="section-title">{{ content.home.aboutTitle }}</h2>
@@ -77,24 +115,6 @@
                 <a class="btn btn-primary" href="contato.html"><i data-lucide="mail"></i> Fale conosco</a>
               </div>
             </div>
-            <article class="card match-card">
-              <div class="match-head">
-                <span>Próximo compromisso</span>
-                <strong>{{ nextFixture.competition }}</strong>
-              </div>
-              <div class="match-body">
-                <div class="versus">
-                  <div class="team-pill"><span class="team-mark">TFC</span> Tarian F.C.</div>
-                  <div class="score">x</div>
-                  <div class="team-pill"><span class="team-mark gold">AV</span> {{ nextFixture.opponent }}</div>
-                </div>
-                <div class="meta-list">
-                  <div class="meta-row"><i data-lucide="calendar"></i> {{ nextFixture.date }} às {{ nextFixture.time }}</div>
-                  <div class="meta-row"><i data-lucide="map-pin"></i> {{ nextFixture.venue }}</div>
-                  <div class="meta-row"><i data-lucide="ticket"></i> Ingressos e setor família em breve</div>
-                </div>
-              </div>
-            </article>
           </div>
         </section>
 

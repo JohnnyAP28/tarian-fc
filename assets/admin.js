@@ -96,6 +96,7 @@ const adminApp = Vue.createApp({
       try {
         const remoteData = await window.TarianCMS.load();
         this.editable = window.mergeTarianData(window.cloneTarianData(), remoteData);
+        this.normalizeEditable();
       } catch (error) {
         this.message = this.friendlyError(error);
       } finally {
@@ -107,6 +108,7 @@ const adminApp = Vue.createApp({
       this.busy = true;
       this.message = "";
       try {
+        this.normalizeEditable();
         await window.TarianCMS.save(this.editable);
         this.message = "Alterações salvas.";
       } catch (error) {
@@ -120,12 +122,24 @@ const adminApp = Vue.createApp({
         stats: { label: "Novo destaque", value: "Valor" },
         timeline: { year: "2026", title: "Novo marco", text: "Descrição do marco." },
         players: { id: this.uid("player"), number: "", name: "Novo jogador", position: "", photo: "", age: "", matches: "", goals: "" },
-        fixtures: { date: "Data", time: "Hora", opponent: "Adversário", venue: "Local", competition: "Competição", status: "Casa" },
+        fixtures: { date: "Data", time: "Hora", opponent: "Adversário", venue: "Local", competition: "Competição", round: "Rodada", status: "Casa", teamLogo: "assets/tarian-logo.png", opponentLogo: "", ticketStatus: "Em definição" },
         news: { tag: "Clube", date: "Data", title: "Nova notícia", text: "Texto da notícia." },
         contacts: { icon: "circle", label: "Novo canal", value: "Informação", href: "" }
       };
       this.editable[type].push(items[type]);
       this.refreshIcons();
+    },
+    normalizeEditable() {
+      if (!Array.isArray(this.editable.fixtures)) {
+        this.editable.fixtures = [];
+      }
+      this.editable.fixtures = this.editable.fixtures.map((match) => ({
+        teamLogo: "assets/tarian-logo.png",
+        opponentLogo: "",
+        round: "",
+        ticketStatus: "Em definição",
+        ...match
+      }));
     },
     removeItem(list, index) {
       list.splice(index, 1);
