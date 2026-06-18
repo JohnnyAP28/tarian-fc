@@ -139,6 +139,7 @@ const tarianDefaults = {
   "products": [
     {
       "name": "Camisa oficial Tarian F.C.",
+      "productId": "TFC-001",
       "slug": "camisa-oficial-tarian-fc",
       "category": "Uniformes",
       "price": "R$ 129,90",
@@ -150,13 +151,14 @@ const tarianDefaults = {
       "material": "Poliéster esportivo",
       "whatsapp": "5500000000000",
       "whatsappMessage": "Olá, tenho interesse na Camisa oficial Tarian F.C.",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
       "available": true
     },
     {
       "name": "Bermuda de treino",
+      "productId": "TFC-002",
       "slug": "bermuda-de-treino",
       "category": "Treino",
       "price": "R$ 79,90",
@@ -168,13 +170,14 @@ const tarianDefaults = {
       "material": "Microfibra esportiva",
       "whatsapp": "5500000000000",
       "whatsappMessage": "Olá, tenho interesse na Bermuda de treino do Tarian F.C.",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
       "available": true
     },
     {
       "name": "Chuteira campo",
+      "productId": "TFC-003",
       "slug": "chuteira-campo",
       "category": "Treino",
       "price": "Sob consulta",
@@ -186,13 +189,14 @@ const tarianDefaults = {
       "material": "Sintético esportivo",
       "whatsapp": "5500000000000",
       "whatsappMessage": "Olá, tenho interesse na Chuteira campo do Tarian F.C.",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "buttonText": "Consultar",
       "buyLink": "contato.html",
       "available": true
     },
     {
       "name": "Meião Tarian",
+      "productId": "TFC-004",
       "slug": "meiao-tarian",
       "category": "Uniformes",
       "price": "R$ 34,90",
@@ -204,13 +208,14 @@ const tarianDefaults = {
       "material": "Poliamida com elastano",
       "whatsapp": "5500000000000",
       "whatsappMessage": "Olá, tenho interesse no Meião Tarian.",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
       "available": true
     },
     {
       "name": "Garrafa da torcida",
+      "productId": "TFC-005",
       "slug": "garrafa-da-torcida",
       "category": "Acessórios",
       "price": "R$ 39,90",
@@ -222,7 +227,7 @@ const tarianDefaults = {
       "material": "Plástico resistente",
       "whatsapp": "5500000000000",
       "whatsappMessage": "Olá, tenho interesse na Garrafa da torcida do Tarian F.C.",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
       "available": true
@@ -452,7 +457,7 @@ const tarianDefaults = {
   ],
   "fixtures": [
     {
-      "teamLogo": "assets/tarian-logo.png",
+      "teamLogo": "assets/tarian-logo.webp",
       "opponentLogo": "",
       "round": "",
       "ticketStatus": "Em definição",
@@ -500,7 +505,7 @@ const tarianDefaults = {
       "tag": "Clube",
       "title": "Tarian F.C. apresenta nova identidade para a temporada",
       "slug": "tarian-fc-apresenta-nova-identidade-para-a-temporada",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "imageAlt": "Campo iluminado do Tarian F.C.",
       "excerpt": "O verde e dourado marcam uma fase de crescimento, com foco em desempenho, torcida e estrutura.",
       "href": "noticias.html",
@@ -510,7 +515,7 @@ const tarianDefaults = {
     {
       "title": "Comissão técnica confirma planejamento para a sequência",
       "slug": "comissao-tecnica-confirma-planejamento-para-a-sequencia",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "imageAlt": "Treino do Tarian F.C.",
       "excerpt": "Treinos integrados e análise de adversários fazem parte da preparação para os próximos desafios.",
       "href": "noticias.html",
@@ -524,7 +529,7 @@ const tarianDefaults = {
       "tag": "Base",
       "title": "Projeto de formação abre observação para jovens atletas",
       "slug": "projeto-de-formacao-abre-observacao-para-jovens-atletas",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "imageAlt": "Base do Tarian F.C. em preparação",
       "excerpt": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com o Tarian.",
       "href": "noticias.html",
@@ -535,7 +540,7 @@ const tarianDefaults = {
       "tag": "Torcida",
       "date": "06 Jun 2026",
       "slug": "tarian-arena-tera-setor-dedicado-a-socios-e-familias",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "slug": "dados-de-jogo-orientam-ajustes-para-manter-intensidade",
       "imageAlt": "Torcida do Tarian F.C.",
       "excerpt": "O clube prepara uma experiência mais organizada para quem acompanha o time em casa.",
@@ -545,7 +550,7 @@ const tarianDefaults = {
       "title": "Tarian Arena terá setor dedicado a sócios e famílias"
     },
     {
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "imageAlt": "Análise de performance do Tarian F.C.",
       "excerpt": "A equipe usa indicadores simples para evoluir posse, finalizações e retomada de bola.",
       "href": "noticias.html",
@@ -560,7 +565,7 @@ const tarianDefaults = {
       "tag": "Comunidade",
       "title": "Clube anuncia calendário de ações sociais no bairro",
       "slug": "clube-anuncia-calendario-de-acoes-sociais-no-bairro",
-      "image": "assets/tarian-hero.png",
+      "image": "assets/tarian-hero.webp",
       "imageAlt": "Ações sociais do Tarian F.C.",
       "excerpt": "Eventos com escolas e projetos locais reforçam o compromisso do Tarian F.C. fora de campo.",
       "href": "noticias.html",

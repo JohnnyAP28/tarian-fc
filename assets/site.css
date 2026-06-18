@@ -312,7 +312,7 @@ body[data-page="produto"] .shop-shortcut {
   background:
     linear-gradient(90deg, rgba(4, 37, 26, 0.92) 0%, rgba(4, 37, 26, 0.76) 46%, rgba(4, 37, 26, 0.22) 100%),
     linear-gradient(180deg, rgba(4, 37, 26, 0.1), rgba(4, 37, 26, 0.72)),
-    url("tarian-hero.png") center / cover no-repeat;
+    url("tarian-hero.webp") center / cover no-repeat;
 }
 
 .hero::after {
@@ -723,7 +723,7 @@ body[data-page="produto"] .shop-shortcut {
 .page-hero {
   background:
     linear-gradient(110deg, rgba(4, 37, 26, 0.96), rgba(4, 37, 26, 0.78)),
-    url("tarian-hero.png") center / cover no-repeat;
+    url("tarian-hero.webp") center / cover no-repeat;
   color: white;
   padding: 58px 0 64px;
 }
@@ -909,7 +909,7 @@ body[data-page="produto"] .shop-shortcut {
   min-height: 150px;
   background:
     linear-gradient(135deg, rgba(4, 37, 26, 0.92), rgba(10, 122, 74, 0.82)),
-    url("tarian-hero.png") center / cover no-repeat;
+    url("tarian-hero.webp") center / cover no-repeat;
   color: white;
   padding: 18px;
 }
@@ -1392,13 +1392,14 @@ tr:last-child td {
 
 .product-detail {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+  grid-template-columns: minmax(0, 0.84fr) minmax(340px, 410px);
   gap: 24px;
   align-items: start;
 }
 
 .product-detail-media {
   overflow: hidden;
+  max-width: 760px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #eef3ef;
@@ -1407,7 +1408,7 @@ tr:last-child td {
 
 .product-detail-media img {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -1424,9 +1425,9 @@ tr:last-child td {
 .product-detail-info h1 {
   margin: 0;
   color: var(--green-950);
-  font-size: clamp(2rem, 4.2vw, 3.7rem);
+  font-size: clamp(1.85rem, 3.4vw, 3.05rem);
   font-weight: 950;
-  line-height: 0.98;
+  line-height: 1;
 }
 
 .product-detail-summary {
@@ -1484,6 +1485,7 @@ tr:last-child td {
   margin: 4px 0 0;
   color: var(--green-950);
   font-weight: 900;
+  overflow-wrap: anywhere;
 }
 
 .product-payment-box {
@@ -1659,7 +1661,7 @@ tr:last-child td {
   border-radius: var(--radius);
   background:
     linear-gradient(120deg, rgba(4, 37, 26, 0.94), rgba(10, 122, 74, 0.88)),
-    url("tarian-hero.png") center / cover no-repeat;
+    url("tarian-hero.webp") center / cover no-repeat;
   color: white;
   padding: clamp(24px, 5vw, 42px);
 }
@@ -2252,7 +2254,7 @@ tr:last-child td {
   }
 
   .product-detail-info h1 {
-    font-size: clamp(1.9rem, 10vw, 2.6rem);
+    font-size: clamp(1.65rem, 8.8vw, 2.25rem);
   }
 
   .product-spec-grid {

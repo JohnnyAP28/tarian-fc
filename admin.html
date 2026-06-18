@@ -6,6 +6,9 @@
     <title>Admin | Tarian F.C.</title>
     <meta name="description" content="Painel administrativo do Tarian F.C." />
     <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
+    <link rel="preconnect" href="https://unpkg.com" crossorigin />
+    <link rel="preconnect" href="https://firestore.googleapis.com" />
+    <link rel="preload" as="image" href="assets/tarian-logo.webp" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
@@ -18,7 +21,7 @@
       <header class="admin-header">
         <div class="container admin-header-inner">
           <a class="brand" href="index.html">
-            <img src="assets/tarian-logo.png" alt="Logo do Tarian Futebol Clube" />
+            <img src="assets/tarian-logo.webp" alt="Logo do Tarian Futebol Clube" width="60" height="60" decoding="async" fetchpriority="high" />
             <span>
               <span class="brand-title">Tarian F.C.</span>
               <span class="brand-subtitle">Painel admin</span>
@@ -225,6 +228,7 @@
                   <span v-else><i data-lucide="shopping-bag"></i></span>
                 </div>
                 <input v-model="product.name" placeholder="Nome do produto" />
+                <input v-model="product.productId" placeholder="ID do Produto" />
                 <input v-model="product.slug" placeholder="URL do produto (ex: camisa-oficial)" />
                 <input v-model="product.category" placeholder="Categoria" />
                 <input v-model="product.price" placeholder="Preço" />

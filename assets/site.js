@@ -122,10 +122,10 @@ const app = Vue.createApp({
       return match.status === "Fora" ? "Tarian F.C." : match.opponent || "Adversário";
     },
     matchHomeLogo(match) {
-      return match.status === "Fora" ? match.opponentLogo || "" : match.teamLogo || "assets/tarian-logo.png";
+      return this.optimizedImage(match.status === "Fora" ? match.opponentLogo || "" : match.teamLogo || "assets/tarian-logo.webp");
     },
     matchAwayLogo(match) {
-      return match.status === "Fora" ? match.teamLogo || "assets/tarian-logo.png" : match.opponentLogo || "";
+      return this.optimizedImage(match.status === "Fora" ? match.teamLogo || "assets/tarian-logo.webp" : match.opponentLogo || "");
     },
     teamInitials(name) {
       return (name || "FC")
@@ -137,10 +137,10 @@ const app = Vue.createApp({
         .toUpperCase();
     },
     newsImage(item) {
-      return item.image || "assets/tarian-hero.png";
+      return this.optimizedImage(item.image || "assets/tarian-hero.webp");
     },
     productImage(product) {
-      return product.image || "assets/tarian-hero.png";
+      return this.optimizedImage(product.image || "assets/tarian-hero.webp");
     },
     productLink(product) {
       return `produto.html?produto=${encodeURIComponent(this.productSlug(product))}`;
@@ -154,6 +154,9 @@ const app = Vue.createApp({
     productSlug(product) {
       return this.slugify(product.slug || product.name || product.category || "produto");
     },
+    productId(product) {
+      return product.productId || product.sku || this.productSlug(product).toUpperCase();
+    },
     productWhatsAppNumber(product) {
       const direct = product.whatsapp || "";
       const contact = this.contacts.find((item) => (item.href || "").startsWith("tel:")) || this.contacts.find((item) => /\d/.test(item.value || ""));
@@ -165,7 +168,11 @@ const app = Vue.createApp({
       if (!number) {
         return "contato.html";
       }
-      const message = product.whatsappMessage || `Olá, tenho interesse no produto ${product.name} do Tarian F.C.`;
+      const productId = this.productId(product);
+      let message = product.whatsappMessage || `Olá, tenho interesse no produto ${product.name} do Tarian F.C.`;
+      if (productId && !message.toLowerCase().includes(productId.toLowerCase())) {
+        message = `${message}\nID do Produto: ${productId}`;
+      }
       return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
     },
     productWhatsAppTarget(product) {
@@ -178,6 +185,7 @@ const app = Vue.createApp({
       return [
         { label: "Categoria", value: product.category },
         { label: "Preço", value: product.price || "Sob consulta" },
+        { label: "ID do Produto", value: this.productId(product) },
         { label: "Tamanhos", value: product.sizes },
         { label: "Cores", value: product.colors },
         { label: "Material", value: product.material },
@@ -190,6 +198,15 @@ const app = Vue.createApp({
         .split(/\n+/)
         .map((paragraph) => paragraph.trim())
         .filter(Boolean);
+    },
+    optimizedImage(src) {
+      if (src === "assets/tarian-hero.png") {
+        return "assets/tarian-hero.webp";
+      }
+      if (src === "assets/tarian-logo.png") {
+        return "assets/tarian-logo.webp";
+      }
+      return src;
     },
     sectionProducts(section) {
       const category = (section.category || "").trim().toLowerCase();
@@ -235,10 +252,14 @@ const app = Vue.createApp({
       return this.articleExtraTarget(item) ? "noopener noreferrer" : null;
     },
     fallbackNewsImage(event) {
+      if (event.target.src.includes("assets/tarian-hero.webp")) {
+        event.target.src = "assets/tarian-hero.png";
+        return;
+      }
       if (event.target.src.includes("assets/tarian-hero.png")) {
         return;
       }
-      event.target.src = "assets/tarian-hero.png";
+      event.target.src = "assets/tarian-hero.webp";
     },
     playerInitials(name) {
       return (name || "TFC")
