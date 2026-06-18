@@ -38,45 +38,45 @@ const tarianDefaults = {
   ],
   "content": {
     "home": {
-      "heroTitle": "Tarian F.C.",
+      "heroTitle": "A.E Tarian",
       "heroText": "Um clube feito para competir com intensidade, revelar talentos e aproximar a torcida de cada partida.",
       "aboutTitle": "Competir, formar e representar.",
-      "aboutText": "O Tarian F.C. nasceu com a ambição de jogar um futebol organizado, intenso e conectado com sua comunidade. Cada treino, jogo e projeto de base reforça a ideia de um clube moderno sem perder suas raízes.",
+      "aboutText": "O A.E Tarian nasceu com a ambição de jogar um futebol organizado, intenso e conectado com sua comunidade. Cada treino, jogo e projeto de base reforça a ideia de um clube moderno sem perder suas raízes.",
       "ctaTitle": "Faça parte da próxima vitória.",
-      "ctaText": " O Tarian F.C. está aberto a parcerias com marcas, projetos sociais, imprensa e atletas que queiram crescer junto com o clube."
+      "ctaText": " O A.E Tarian está aberto a parcerias com marcas, projetos sociais, imprensa e atletas que queiram crescer junto com o clube."
     },
     "clube": {
       "pageTitle": "Um clube criado para representar sua comunidade.",
-      "pageText": "O Tarian F.C. une futebol competitivo, formação de atletas e uma marca esportiva pronta para crescer com responsabilidade.",
+      "pageText": "O A.E Tarian une futebol competitivo, formação de atletas e uma marca esportiva pronta para crescer com responsabilidade.",
       "sectionTitle": "Verde e dourado dentro e fora de campo.",
       "sectionText": "Nossa cultura combina trabalho, intensidade e respeito. O clube valoriza quem treina com compromisso, joga pelo coletivo e entende que cada partida também constrói uma relação com a torcida."
     },
     "elenco": {
-      "pageTitle": "Catálogo de jogadores do Tarian F.C.",
+      "pageTitle": "Catálogo de jogadores do A.E Tarian",
       "pageText": "Fotos, nomes e números de camisa do elenco principal em uma visualização simples para a torcida.",
       "sectionTitle": "Jogadores cadastrados.",
       "sectionText": "Mantenha o catálogo atualizado pelo painel admin sempre que entrar ou sair um atleta."
     },
     "jogos": {
       "pageTitle": "Jogos, resultados e próximos desafios.",
-      "pageText": "Acompanhe os compromissos do Tarian F.C. na temporada e os resultados recentes da equipe.",
+      "pageText": "Acompanhe os compromissos do A.E Tarian na temporada e os resultados recentes da equipe.",
       "sectionTitle": "Próxima partida em casa.",
-      "sectionText": "• O Tarian F.C recebe mais um jogo decisivo com entrada da torcida pelo portão principal e operação especial para torcedores."
+      "sectionText": "• O A.E Tarian recebe mais um jogo decisivo com entrada da torcida pelo portão principal e operação especial para torcedores."
     },
     "noticias": {
       "pageTitle": "Informação oficial para torcida, imprensa e parceiros.",
-      "pageText": "Bastidores, comunicados, preparação, resultados e projetos do Tarian F.C. reunidos em um só lugar.",
+      "pageText": "Bastidores, comunicados, preparação, resultados e projetos do A.E Tarian reunidos em um só lugar.",
       "sectionTitle": "Últimas publicações."
     },
     "loja": {
-      "pageTitle": "Loja oficial do Tarian F.C.",
+      "pageTitle": "Loja oficial do A.E Tarian",
       "pageText": "Produtos do clube para torcida, treinos e dias de jogo.",
       "sectionTitle": "Catálogo oficial.",
       "sectionText": "Escolha uma categoria, confira os detalhes e fale com o clube para comprar."
     },
     "contato": {
       "pageTitle": "Vamos conversar sobre futebol, torcida e parcerias.",
-      "pageText": "Use os canais oficiais para falar com o Tarian F.C. sobre patrocínio, imprensa, jogos, atletas ou projetos da comunidade.",
+      "pageText": "Use os canais oficiais para falar com o A.E Tarian sobre patrocínio, imprensa, jogos, atletas ou projetos da comunidade.",
       "sectionTitle": "O clube responde por aqui.",
       "sectionText": "Centralize o primeiro contato pelo formulário ou pelos canais abaixo. Os dados são exemplos e podem ser substituídos pelos contatos oficiais do clube."
     }
@@ -92,7 +92,7 @@ const tarianDefaults = {
     },
     {
       "label": "Base",
-      "value": "⚽ Tarian Federação Clube."
+      "value": "⚽ A.E Tarian."
     },
     {
       "label": "Torcida",
@@ -101,7 +101,7 @@ const tarianDefaults = {
   ],
   "principles": [
     {
-      "text": "O Tarian F.C. joga com disciplina, coragem e respeito pela comunidade que veste nossas cores.",
+      "text": "O A.E Tarian joga com disciplina, coragem e respeito pela comunidade que veste nossas cores.",
       "title": "Identidade forte",
       "icon": "shield-check"
     },
@@ -120,7 +120,7 @@ const tarianDefaults = {
     {
       "eyebrow": "Uniformes",
       "title": "Camisas e kits de jogo.",
-      "text": "Peças para vestir o Tarian F.C. em treinos, arquibancada e dias de partida.",
+      "text": "Peças para vestir o A.E Tarian em treinos, arquibancada e dias de partida.",
       "category": "Uniformes"
     },
     {
@@ -138,19 +138,19 @@ const tarianDefaults = {
   ],
   "products": [
     {
-      "name": "Camisa oficial Tarian F.C.",
+      "name": "Camisa oficial A.E Tarian",
       "productId": "TFC-001",
       "slug": "camisa-oficial-tarian-fc",
       "category": "Uniformes",
       "price": "R$ 129,90",
       "badge": "Mais pedido",
       "description": "Camisa principal do clube com escudo aplicado e tecido leve.",
-      "details": "Camisa principal do Tarian F.C. para torcedores e dias de jogo.\nTecido leve, escudo aplicado e acabamento esportivo para uso casual ou em treino.\nPara comprar, confirme tamanho, disponibilidade e retirada pelo WhatsApp.",
+      "details": "Camisa principal do A.E Tarian para torcedores e dias de jogo.\nTecido leve, escudo aplicado e acabamento esportivo para uso casual ou em treino.\nPara comprar, confirme tamanho, disponibilidade e retirada pelo WhatsApp.",
       "sizes": "P, M, G, GG",
       "colors": "Azul e amarelo",
       "material": "Poliéster esportivo",
       "whatsapp": "5500000000000",
-      "whatsappMessage": "Olá, tenho interesse na Camisa oficial Tarian F.C.",
+      "whatsappMessage": "Olá, tenho interesse na Camisa oficial A.E Tarian",
       "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
@@ -169,7 +169,7 @@ const tarianDefaults = {
       "colors": "Preto, azul",
       "material": "Microfibra esportiva",
       "whatsapp": "5500000000000",
-      "whatsappMessage": "Olá, tenho interesse na Bermuda de treino do Tarian F.C.",
+      "whatsappMessage": "Olá, tenho interesse na Bermuda de treino do A.E Tarian",
       "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
@@ -188,26 +188,26 @@ const tarianDefaults = {
       "colors": "Consultar modelos",
       "material": "Sintético esportivo",
       "whatsapp": "5500000000000",
-      "whatsappMessage": "Olá, tenho interesse na Chuteira campo do Tarian F.C.",
+      "whatsappMessage": "Olá, tenho interesse na Chuteira campo do A.E Tarian",
       "image": "assets/tarian-hero.webp",
       "buttonText": "Consultar",
       "buyLink": "contato.html",
       "available": true
     },
     {
-      "name": "Meião Tarian",
+      "name": "Meião A.E Tarian",
       "productId": "TFC-004",
       "slug": "meiao-tarian",
       "category": "Uniformes",
       "price": "R$ 34,90",
       "badge": "Kit",
       "description": "Meião esportivo para completar o uniforme do clube.",
-      "details": "Meião esportivo do Tarian F.C. para completar o uniforme de jogo ou treino.\nPossui cano alto, ajuste firme e tecido confortável para uso prolongado.\nFale pelo WhatsApp para confirmar numeração e disponibilidade.",
+      "details": "Meião esportivo do A.E Tarian para completar o uniforme de jogo ou treino.\nPossui cano alto, ajuste firme e tecido confortável para uso prolongado.\nFale pelo WhatsApp para confirmar numeração e disponibilidade.",
       "sizes": "34-38, 39-43",
       "colors": "Azul e amarelo",
       "material": "Poliamida com elastano",
       "whatsapp": "5500000000000",
-      "whatsappMessage": "Olá, tenho interesse no Meião Tarian.",
+      "whatsappMessage": "Olá, tenho interesse no Meião A.E Tarian.",
       "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
@@ -221,12 +221,12 @@ const tarianDefaults = {
       "price": "R$ 39,90",
       "badge": "Torcida",
       "description": "Garrafa personalizada para jogos, treino e arquibancada.",
-      "details": "Garrafa personalizada para quem acompanha o Tarian F.C. em jogos, treinos e no dia a dia.\nLeve, prática e fácil de transportar, com identidade visual do clube.\nCombine compra, retirada e disponibilidade pelo WhatsApp.",
+      "details": "Garrafa personalizada para quem acompanha o A.E Tarian em jogos, treinos e no dia a dia.\nLeve, prática e fácil de transportar, com identidade visual do clube.\nCombine compra, retirada e disponibilidade pelo WhatsApp.",
       "sizes": "600 ml",
       "colors": "Azul e amarelo",
       "material": "Plástico resistente",
       "whatsapp": "5500000000000",
-      "whatsappMessage": "Olá, tenho interesse na Garrafa da torcida do Tarian F.C.",
+      "whatsappMessage": "Olá, tenho interesse na Garrafa da torcida do A.E Tarian",
       "image": "assets/tarian-hero.webp",
       "buttonText": "Comprar",
       "buyLink": "contato.html",
@@ -466,13 +466,13 @@ const tarianDefaults = {
       "opponent": "Atlético Vale",
       "status": "Casa",
       "competition": "Liga Regional",
-      "venue": "Tarian Arena"
+      "venue": "A.E Tarian"
     }
   ],
   "results": [
     {
       "note": "Vitória",
-      "venue": "Tarian Arena",
+      "venue": "A.E Tarian",
       "date": "15 JUN",
       "score": "3 x 1",
       "opponent": "Vila Nova"
@@ -486,7 +486,7 @@ const tarianDefaults = {
     },
     {
       "note": "Vitória",
-      "venue": "Tarian Arena",
+      "venue": "A.E Tarian",
       "date": "01 JUN",
       "opponent": "Porto FC",
       "score": "2 x 0"
@@ -503,10 +503,10 @@ const tarianDefaults = {
     {
       "date": "16 Jun 2026",
       "tag": "Clube",
-      "title": "Tarian F.C. apresenta nova identidade para a temporada",
+      "title": "A.E Tarian apresenta nova identidade para a temporada",
       "slug": "tarian-fc-apresenta-nova-identidade-para-a-temporada",
       "image": "assets/tarian-hero.webp",
-      "imageAlt": "Campo iluminado do Tarian F.C.",
+      "imageAlt": "Campo iluminado do A.E Tarian",
       "excerpt": "O verde e dourado marcam uma fase de crescimento, com foco em desempenho, torcida e estrutura.",
       "href": "noticias.html",
       "cta": "Leia agora",
@@ -516,7 +516,7 @@ const tarianDefaults = {
       "title": "Comissão técnica confirma planejamento para a sequência",
       "slug": "comissao-tecnica-confirma-planejamento-para-a-sequencia",
       "image": "assets/tarian-hero.webp",
-      "imageAlt": "Treino do Tarian F.C.",
+      "imageAlt": "Treino do A.E Tarian",
       "excerpt": "Treinos integrados e análise de adversários fazem parte da preparação para os próximos desafios.",
       "href": "noticias.html",
       "cta": "Leia agora",
@@ -530,11 +530,11 @@ const tarianDefaults = {
       "title": "Projeto de formação abre observação para jovens atletas",
       "slug": "projeto-de-formacao-abre-observacao-para-jovens-atletas",
       "image": "assets/tarian-hero.webp",
-      "imageAlt": "Base do Tarian F.C. em preparação",
-      "excerpt": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com o Tarian.",
+      "imageAlt": "Base do A.E Tarian em preparação",
+      "excerpt": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com a A.E Tarian.",
       "href": "noticias.html",
       "cta": "Leia agora",
-      "text": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com o Tarian."
+      "text": "A iniciativa busca aproximar o clube dos bairros e revelar jogadores identificados com a A.E Tarian."
     },
     {
       "tag": "Torcida",
@@ -542,16 +542,16 @@ const tarianDefaults = {
       "slug": "tarian-arena-tera-setor-dedicado-a-socios-e-familias",
       "image": "assets/tarian-hero.webp",
       "slug": "dados-de-jogo-orientam-ajustes-para-manter-intensidade",
-      "imageAlt": "Torcida do Tarian F.C.",
+      "imageAlt": "Torcida do A.E Tarian",
       "excerpt": "O clube prepara uma experiência mais organizada para quem acompanha o time em casa.",
       "href": "noticias.html",
       "cta": "Leia agora",
       "text": "O clube prepara uma experiência mais organizada para quem acompanha o time em casa.",
-      "title": "Tarian Arena terá setor dedicado a sócios e famílias"
+      "title": "A.E Tarian terá setor dedicado a sócios e famílias"
     },
     {
       "image": "assets/tarian-hero.webp",
-      "imageAlt": "Análise de performance do Tarian F.C.",
+      "imageAlt": "Análise de performance do A.E Tarian",
       "excerpt": "A equipe usa indicadores simples para evoluir posse, finalizações e retomada de bola.",
       "href": "noticias.html",
       "cta": "Leia agora",
@@ -566,11 +566,11 @@ const tarianDefaults = {
       "title": "Clube anuncia calendário de ações sociais no bairro",
       "slug": "clube-anuncia-calendario-de-acoes-sociais-no-bairro",
       "image": "assets/tarian-hero.webp",
-      "imageAlt": "Ações sociais do Tarian F.C.",
-      "excerpt": "Eventos com escolas e projetos locais reforçam o compromisso do Tarian F.C. fora de campo.",
+      "imageAlt": "Ações sociais do A.E Tarian",
+      "excerpt": "Eventos com escolas e projetos locais reforçam o compromisso do A.E Tarian fora de campo.",
       "href": "noticias.html",
       "cta": "Leia agora",
-      "text": "Eventos com escolas e projetos locais reforçam o compromisso do Tarian F.C. fora de campo."
+      "text": "Eventos com escolas e projetos locais reforçam o compromisso do A.E Tarian fora de campo."
     }
   ],
   "sponsors": [
@@ -594,7 +594,7 @@ const tarianDefaults = {
     },
     {
       "href": "",
-      "value": "Tarian Federação Clube, setor administrativo.",
+      "value": "A.E Tarian, setor administrativo.",
       "label": "📍 Endereço",
       "icon": "Nosso Endereço."
     },
@@ -608,7 +608,7 @@ const tarianDefaults = {
   "timeline": [
     {
       "year": "2019",
-      "text": "Um grupo de atletas e torcedores organiza o Tarian F.C. com foco em competir e representar a comunidade.",
+      "text": "Um grupo de atletas e torcedores organiza o A.E Tarian com foco em competir e representar a comunidade.",
       "title": "Início do projeto"
     },
     {
@@ -618,7 +618,7 @@ const tarianDefaults = {
     },
     {
       "text": "A equipe passa a mandar jogos em uma casa própria, aproximando torcida, atletas e patrocinadores.",
-      "title": "Tarian Arena",
+      "title": "A.E Tarian",
       "year": "2024"
     },
     {

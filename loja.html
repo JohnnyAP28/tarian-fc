@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loja | Tarian F.C.</title>
-    <meta name="description" content="Loja oficial do Tarian F.C. com camisas, bermudas, chuteiras e produtos da torcida." />
+    <title>Loja | A.E Tarian</title>
+    <meta name="description" content="Loja oficial do A.E Tarian com camisas, bermudas, chuteiras e produtos da torcida." />
     <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="preconnect" href="https://firestore.googleapis.com" />
@@ -21,9 +21,9 @@
     <div id="app" class="site-shell" v-cloak>
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" href="index.html" aria-label="Tarian F.C.">
-            <img src="assets/tarian-logo.webp" alt="Logo do Tarian Futebol Clube" width="60" height="60" decoding="async" fetchpriority="high" />
-            <span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Futebol com identidade</span></span>
+          <a class="brand" href="index.html" aria-label="A.E Tarian">
+            <img src="assets/tarian-logo.webp" alt="Logo do A.E Tarian" width="60" height="60" decoding="async" fetchpriority="high" />
+            <span><span class="brand-title">A.E Tarian</span><span class="brand-subtitle">Futebol com identidade</span></span>
           </a>
           <nav class="desktop-nav" aria-label="Navegação principal">
             <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
@@ -60,7 +60,7 @@
               </div>
               <a class="btn btn-light section-heading-action" href="contato.html"><i data-lucide="message-circle"></i> Falar com o clube</a>
             </div>
-            <div class="product-grid">
+            <div class="product-grid" v-if="contentReady">
               <article class="product-card" v-for="product in featuredProducts" :key="'featured' + product.name">
                 <a class="product-media" :href="productLink(product)" :target="productTarget(product)" :rel="productRel(product)">
                   <img :src="productImage(product)" :alt="'Produto ' + product.name" width="420" height="315" loading="lazy" decoding="async" @error="fallbackNewsImage" />
@@ -83,7 +83,7 @@
             <span class="eyebrow">{{ section.eyebrow || 'Loja' }}</span>
             <h2 class="section-title section-title-sm">{{ section.title }}</h2>
             <p class="section-copy" v-if="section.text">{{ section.text }}</p>
-            <div class="product-grid">
+            <div class="product-grid" v-if="contentReady">
               <article class="product-card" v-for="product in sectionProducts(section)" :key="section.title + product.name">
                 <a class="product-media" :href="productLink(product)" :target="productTarget(product)" :rel="productRel(product)">
                   <img :src="productImage(product)" :alt="'Produto ' + product.name" width="420" height="315" loading="lazy" decoding="async" @error="fallbackNewsImage" />
@@ -98,7 +98,7 @@
                 </div>
               </article>
             </div>
-            <p class="empty-note" v-if="!sectionProducts(section).length">Nenhum produto cadastrado para esta seção.</p>
+            <p class="empty-note" v-if="contentReady && !sectionProducts(section).length">Nenhum produto cadastrado para esta seção.</p>
           </div>
         </section>
 
@@ -106,7 +106,7 @@
           <div class="container">
             <div class="cta-band">
               <h2>Quer reservar um produto?</h2>
-              <p>Fale com o Tarian F.C. para confirmar tamanho, disponibilidade, formas de pagamento e retirada.</p>
+              <p>Fale com o A.E Tarian para confirmar tamanho, disponibilidade, formas de pagamento e retirada.</p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="contato.html"><i data-lucide="shopping-bag"></i> Abrir atendimento</a>
               </div>
@@ -118,12 +118,12 @@
       <footer class="footer">
         <div class="container">
           <div class="footer-grid">
-            <div><a class="brand" href="index.html"><img src="assets/tarian-logo.webp" alt="" width="60" height="60" loading="lazy" decoding="async" /><span><span class="brand-title">Tarian F.C.</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
+            <div><a class="brand" href="index.html"><img src="assets/tarian-logo.webp" alt="" width="60" height="60" loading="lazy" decoding="async" /><span><span class="brand-title">A.E Tarian</span><span class="brand-subtitle">Verde e dourado</span></span></a><p>Futebol competitivo, comunidade forte e uma marca preparada para crescer.</p></div>
             <div><h3>Clube</h3><div class="footer-links"><a href="clube.html">História</a><a href="elenco.html">Elenco</a><a href="jogos.html">Jogos</a></div></div>
             <div><h3>Loja</h3><div class="footer-links"><a href="loja.html">Produtos</a><a href="contato.html">Comprar</a><a href="contato.html">Atendimento</a></div></div>
             <div><h3>Redes</h3><div class="footer-links"><a href="contato.html">Instagram</a><a href="contato.html">YouTube</a><a href="contato.html">TikTok</a></div></div>
           </div>
-          <div class="footer-bottom"><span>© 2026 Tarian F.C.</span><span>Site institucional oficial</span></div>
+          <div class="footer-bottom"><span>© 2026 A.E Tarian</span><span>Site institucional oficial</span></div>
         </div>
       </footer>
     </div>

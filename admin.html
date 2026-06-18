@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin | Tarian F.C.</title>
-    <meta name="description" content="Painel administrativo do Tarian F.C." />
+    <title>Admin | A.E Tarian</title>
+    <meta name="description" content="Painel administrativo do A.E Tarian" />
     <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="preconnect" href="https://firestore.googleapis.com" />
@@ -21,9 +21,9 @@
       <header class="admin-header">
         <div class="container admin-header-inner">
           <a class="brand" href="index.html">
-            <img src="assets/tarian-logo.webp" alt="Logo do Tarian Futebol Clube" width="60" height="60" decoding="async" fetchpriority="high" />
+            <img src="assets/tarian-logo.webp" alt="Logo do A.E Tarian" width="60" height="60" decoding="async" fetchpriority="high" />
             <span>
-              <span class="brand-title">Tarian F.C.</span>
+              <span class="brand-title">A.E Tarian</span>
               <span class="brand-subtitle">Painel admin</span>
             </span>
           </a>
@@ -173,7 +173,7 @@
                 <input v-model="match.round" placeholder="Rodada" />
                 <input v-model="match.venue" placeholder="Local" />
                 <select v-model="match.status"><option>Casa</option><option>Fora</option></select>
-                <input v-model="match.teamLogo" placeholder="URL logo Tarian" />
+                <input v-model="match.teamLogo" placeholder="URL da logo da A.E Tarian" />
                 <input v-model="match.opponentLogo" placeholder="URL logo adversário" />
                 <input v-model="match.ticketStatus" placeholder="Status do jogo" />
                 <button class="icon-button danger" type="button" @click="removeItem(editable.fixtures, index)" aria-label="Remover"><i data-lucide="trash-2"></i></button>

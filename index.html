@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tarian F.C. | Futebol com identidade</title>
-    <meta name="description" content="Site oficial do Tarian F.C. com notícias, elenco, próximos jogos e informações para torcida e patrocinadores." />
+    <title>A.E Tarian | Futebol com identidade</title>
+    <meta name="description" content="Site oficial do A.E Tarian com notícias, elenco, próximos jogos e informações para torcida e patrocinadores." />
     <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="preconnect" href="https://firestore.googleapis.com" />
@@ -21,10 +21,10 @@
     <div id="app" class="site-shell" v-cloak>
       <header class="site-header">
         <div class="container header-inner">
-          <a class="brand" href="index.html" aria-label="Tarian F.C.">
-            <img src="assets/tarian-logo.webp" alt="Logo do Tarian Futebol Clube" width="60" height="60" decoding="async" fetchpriority="high" />
+          <a class="brand" href="index.html" aria-label="A.E Tarian">
+            <img src="assets/tarian-logo.webp" alt="Logo do A.E Tarian" width="60" height="60" decoding="async" fetchpriority="high" />
             <span>
-              <span class="brand-title">Tarian F.C.</span>
+              <span class="brand-title">A.E Tarian</span>
               <span class="brand-subtitle">Futebol com identidade</span>
             </span>
           </a>
@@ -75,11 +75,11 @@
             <div class="section-heading-row">
               <div>
                 <span class="eyebrow">Próximos jogos</span>
-                <h2 class="section-title section-title-sm">Calendário do Tarian.</h2>
+                <h2 class="section-title section-title-sm">Calendário da A.E Tarian.</h2>
               </div>
               <a class="btn btn-light section-heading-action" href="jogos.html"><i data-lucide="calendar-days"></i> Ver calendário</a>
             </div>
-            <div class="match-rail" aria-label="Próximos jogos do Tarian F.C.">
+            <div class="match-rail" aria-label="Próximos jogos do A.E Tarian">
               <article class="upcoming-card" v-for="match in fixtures" :key="match.date + match.opponent + match.competition">
                 <div class="upcoming-card-head">
                   <span>{{ match.status || 'Casa' }}</span>
@@ -111,7 +111,7 @@
         <section class="section news-section">
           <div class="container">
             <span class="eyebrow">Notícias</span>
-            <h2 class="section-title">Últimas do Tarian.</h2>
+            <h2 class="section-title">Últimas da A.E Tarian.</h2>
             <div class="news-grid news-grid-home">
               <article class="news-card" v-for="item in featuredNews" :key="item.title">
                 <a class="news-media" :href="newsLink(item)" :target="newsTarget(item)" :rel="newsRel(item)">
@@ -187,7 +187,7 @@
               <a class="brand" href="index.html">
                 <img src="assets/tarian-logo.webp" alt="" width="60" height="60" loading="lazy" decoding="async" />
                 <span>
-                  <span class="brand-title">Tarian F.C.</span>
+                  <span class="brand-title">A.E Tarian</span>
                   <span class="brand-subtitle">Verde e dourado</span>
                 </span>
               </a>
@@ -218,7 +218,7 @@
             </div>
           </div>
           <div class="footer-bottom">
-            <span>© 2026 Tarian F.C.</span>
+            <span>© 2026 A.E Tarian</span>
             <span>Site institucional oficial</span>
           </div>
         </div>

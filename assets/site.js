@@ -7,7 +7,7 @@ const app = Vue.createApp({
       mobileOpen: false,
       contentReady: false,
       toastVisible: false,
-      toastText: "Mensagem enviada. O Tarian F.C. vai retornar em breve."
+      toastText: "Mensagem enviada. A A.E Tarian vai retornar em breve."
     };
   },
   computed: {
@@ -41,6 +41,9 @@ const app = Vue.createApp({
       return this.news.filter((item) => this.newsSlug(item) !== this.newsSlug(this.selectedNews)).slice(0, 3);
     },
     featuredProducts() {
+      if (!this.contentReady) {
+        return [];
+      }
       return this.products.filter((product) => product.available !== false).slice(0, 6);
     },
     selectedProductSlug() {
@@ -51,9 +54,15 @@ const app = Vue.createApp({
       if (this.currentPage !== "produto") {
         return null;
       }
+      if (!this.contentReady) {
+        return null;
+      }
       return this.products.find((product) => this.productSlug(product) === this.selectedProductSlug) || null;
     },
     relatedProducts() {
+      if (!this.contentReady) {
+        return [];
+      }
       if (!this.selectedProduct) {
         return this.products.filter((product) => product.available !== false).slice(0, 6);
       }
@@ -67,7 +76,7 @@ const app = Vue.createApp({
         date: "Em breve",
         time: "",
         opponent: "A definir",
-        venue: "Tarian Arena",
+        venue: "A.E Tarian",
         competition: "Calendário",
         status: "Casa"
       };
@@ -116,10 +125,10 @@ const app = Vue.createApp({
       return this.currentPage === id;
     },
     matchHomeName(match) {
-      return match.status === "Fora" ? match.opponent || "Adversário" : "Tarian F.C.";
+      return match.status === "Fora" ? match.opponent || "Adversário" : "A.E Tarian";
     },
     matchAwayName(match) {
-      return match.status === "Fora" ? "Tarian F.C." : match.opponent || "Adversário";
+      return match.status === "Fora" ? "A.E Tarian" : match.opponent || "Adversário";
     },
     matchHomeLogo(match) {
       return this.optimizedImage(match.status === "Fora" ? match.opponentLogo || "" : match.teamLogo || "assets/tarian-logo.webp");
@@ -169,7 +178,7 @@ const app = Vue.createApp({
         return "contato.html";
       }
       const productId = this.productId(product);
-      let message = product.whatsappMessage || `Olá, tenho interesse no produto ${product.name} do Tarian F.C.`;
+      let message = product.whatsappMessage || `Olá, tenho interesse no produto ${product.name} da A.E Tarian`;
       if (productId && !message.toLowerCase().includes(productId.toLowerCase())) {
         message = `${message}\nID do Produto: ${productId}`;
       }
@@ -209,10 +218,35 @@ const app = Vue.createApp({
       return src;
     },
     sectionProducts(section) {
+      if (!this.contentReady) {
+        return [];
+      }
       const category = (section.category || "").trim().toLowerCase();
       return this.products
         .filter((product) => product.available !== false)
         .filter((product) => !category || (product.category || "").trim().toLowerCase() === category);
+    },
+    normalizeBrandCopy(value) {
+      if (typeof value === "string") {
+        return value
+          .replace(/Tarian F\.?\s*C\.?/g, "A.E Tarian")
+          .replace(/Tarian Arena/g, "A.E Tarian")
+          .replace(/Tarian Futebol Clube/g, "A.E Tarian")
+          .replace(/Tarian Federação Clube/g, "A.E Tarian")
+          .replace(/Meião Tarian/g, "Meião A.E Tarian")
+          .replace(/Assessoria Tarian/g, "Assessoria A.E Tarian")
+          .replace(/padrão Tarian/g, "padrão A.E Tarian")
+          .replace(/Padrão Tarian/g, "Padrão A.E Tarian")
+          .replace(/Calendário do Tarian/g, "Calendário da A.E Tarian")
+          .replace(/Últimas do Tarian/g, "Últimas da A.E Tarian");
+      }
+      if (Array.isArray(value)) {
+        return value.map((item) => this.normalizeBrandCopy(item));
+      }
+      if (value && typeof value === "object") {
+        return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, this.normalizeBrandCopy(item)]));
+      }
+      return value;
     },
     slugify(value) {
       return (value || "noticia")
@@ -271,7 +305,7 @@ const app = Vue.createApp({
         .toUpperCase();
     },
     applyData(remoteData) {
-      const merged = window.mergeTarianData(window.cloneTarianData(), remoteData);
+      const merged = this.normalizeBrandCopy(window.mergeTarianData(window.cloneTarianData(), remoteData));
       Object.keys(merged).forEach((key) => {
         this[key] = merged[key];
       });
