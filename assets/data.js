@@ -40,6 +40,7 @@ const tarianDefaults = {
     "home": {
       "heroTitle": "A.E Tarian",
       "heroText": "Um clube feito para competir com intensidade, revelar talentos e aproximar a torcida de cada partida.",
+      "heroImage": "assets/tarian-hero-novo.jpg",
       "aboutTitle": "Competir, formar e representar.",
       "aboutText": "O A.E Tarian nasceu com a ambição de jogar um futebol organizado, intenso e conectado com sua comunidade. Cada treino, jogo e projeto de base reforça a ideia de um clube moderno sem perder suas raízes.",
       "ctaTitle": "Faça parte da próxima vitória.",
@@ -539,7 +540,6 @@ const tarianDefaults = {
     {
       "tag": "Torcida",
       "date": "06 Jun 2026",
-      "slug": "tarian-arena-tera-setor-dedicado-a-socios-e-familias",
       "image": "assets/tarian-hero.webp",
       "slug": "dados-de-jogo-orientam-ajustes-para-manter-intensidade",
       "imageAlt": "Torcida do A.E Tarian",
