@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://firestore.googleapis.com" />
     <link rel="preload" as="image" href="assets/tarian-logo.webp" type="image/webp" fetchpriority="high" />
     <link rel="preload" as="image" href="assets/tarian-hero.webp" type="image/webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="assets/tarian-hero-novo.jpg" type="image/jpeg" fetchpriority="high" />
     <link rel="stylesheet" href="assets/site.css" />
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
@@ -54,12 +55,12 @@
       <main>
 
         <!-- HERO -->
-        <section class="hero">
+        <section class="hero" :style="{ '--hero-bg': `url(${content.home.heroImage || 'assets/tarian-hero-novo.jpg'})` }">
           <div class="container hero-content">
 
-            <!-- ⭐ IMAGEM ADICIONADA AQUI -->
+            <!-- ESCUDO DO CLUBE -->
             <div class="hero-logo-card">
-              <img src="assets/tarian-futebol-clube.png" alt="Tarian Futebol Clube" />
+              <img :src="content.home.heroImage || 'assets/tarian-hero-novo.jpg'" alt="Escudo do Tarian Futebol Clube" />
             </div>
 
             <span class="hero-badge">
