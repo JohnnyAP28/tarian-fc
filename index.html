@@ -3,14 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>A.E Tarian | Futebol com identidade</title>
-    <meta name="description" content="Site oficial do A.E Tarian com notícias, elenco, próximos jogos e informações para torcida e patrocinadores." />
+
+    <meta name="description" content="Site oficial do A.E Tarian: notícias, elenco, jogos, resultados e informações da equipe." />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- SEO / Open Graph -->
+    <meta property="og:title" content="A.E Tarian | Futebol com identidade" />
+    <meta property="og:description" content="Acompanhe jogos, elenco e novidades do A.E Tarian." />
+    <meta property="og:type" content="website" />
+
     <link rel="icon" href="assets/tarian-logo.png" type="image/png" />
     <link rel="preconnect" href="https://unpkg.com" crossorigin />
     <link rel="preconnect" href="https://firestore.googleapis.com" />
-    <link rel="preload" as="image" href="assets/tarian-logo.webp" type="image/webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="assets/tarian-hero.webp" type="image/webp" fetchpriority="high" />
+
+    <link rel="preload" as="image" href="assets/tarian-logo.webp" />
+    <link rel="preload" as="image" href="assets/tarian-hero.webp" />
+
     <link rel="stylesheet" href="assets/site.css" />
+
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script defer src="https://unpkg.com/lucide@latest"></script>
     <script defer src="assets/data.js"></script>
@@ -21,32 +33,43 @@
   <body data-page="home">
     <div id="app" class="site-shell" v-cloak>
 
+      <!-- HEADER -->
       <header class="site-header">
         <div class="container header-inner">
+
           <a class="brand" href="index.html" aria-label="A.E Tarian">
-            <img src="assets/tarian-logo.webp" alt="Logo do A.E Tarian" width="60" height="60" decoding="async" fetchpriority="high" />
-            <span>
-              <span class="brand-title">A.E Tarian</span>
-              <span class="brand-subtitle">Futebol com identidade</span>
-            </span>
+            <img src="assets/tarian-logo.webp" alt="A.E Tarian" width="60" height="60" />
+            <div>
+              <strong class="brand-title">A.E Tarian</strong>
+              <small class="brand-subtitle">Futebol com identidade</small>
+            </div>
           </a>
 
-          <nav class="desktop-nav" aria-label="Navegação principal">
-            <a v-for="item in navItems" :key="item.id" class="nav-link" :class="{ 'is-active': isActive(item.id) }" :href="item.href">{{ item.label }}</a>
+          <nav class="desktop-nav" aria-label="Menu principal">
+            <a v-for="item in navItems" :key="item.id" :href="item.href" class="nav-link" :class="{ 'is-active': isActive(item.id) }">
+              {{ item.label }}
+            </a>
           </nav>
 
           <div class="header-actions">
-            <a class="icon-button shop-shortcut" href="loja.html" aria-label="Abrir loja"><i data-lucide="shopping-bag"></i></a>
-            <a class="btn btn-primary" href="contato.html"><i data-lucide="handshake"></i> Patrocinar</a>
-            <button class="icon-button mobile-toggle" type="button" aria-label="Abrir menu" @click="mobileOpen = !mobileOpen">
+            <a class="icon-button" href="loja.html" aria-label="Loja">
+              <i data-lucide="shopping-bag"></i>
+            </a>
+            <a class="btn btn-primary" href="contato.html">
+              <i data-lucide="handshake"></i> Patrocinar
+            </a>
+            <button class="icon-button" type="button" @click="mobileOpen = !mobileOpen">
               <i data-lucide="menu"></i>
             </button>
           </div>
+
         </div>
 
         <div class="mobile-panel" v-show="mobileOpen">
           <div class="container">
-            <a v-for="item in navItems" :key="item.id" :class="{ 'is-active': isActive(item.id) }" :href="item.href" @click="mobileOpen = false">{{ item.label }}</a>
+            <a v-for="item in navItems" :key="item.id" :href="item.href" @click="mobileOpen = false">
+              {{ item.label }}
+            </a>
           </div>
         </div>
       </header>
@@ -57,13 +80,11 @@
         <section class="hero">
           <div class="container hero-content">
 
-            <!-- ⭐ IMAGEM ADICIONADA AQUI -->
             <div class="hero-logo-card">
-              <img src="assets/tarian-futebol-clube.png" alt="Tarian Futebol Clube" />
+              <img src="assets/tarian-futebol-clube.png" alt="A.E Tarian" />
             </div>
 
             <span class="hero-badge">
-              <img src="assets/tarian-logo.webp" alt="" width="60" height="60" loading="lazy" decoding="async" />
               Temporada 2026
             </span>
 
@@ -71,15 +92,19 @@
             <p>{{ content.home.heroText }}</p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="jogos.html"><i data-lucide="calendar-days"></i> Próximos jogos</a>
-              <a class="btn btn-secondary" href="clube.html"><i data-lucide="shield"></i> Conheça o clube</a>
+              <a class="btn btn-primary" href="jogos.html">
+                <i data-lucide="calendar-days"></i> Próximos jogos
+              </a>
+              <a class="btn btn-secondary" href="clube.html">
+                <i data-lucide="shield"></i> Conheça o clube
+              </a>
             </div>
 
           </div>
         </section>
 
-        <!-- RESTANTE DO SITE (não mexi em nada) -->
-        <section class="hero-strip" aria-label="Resumo do clube">
+        <!-- STATS -->
+        <section class="hero-strip">
           <div class="container">
             <div class="strip-grid">
               <div class="strip-item" v-for="stat in stats" :key="stat.label">
@@ -90,49 +115,57 @@
           </div>
         </section>
 
+        <!-- UPCOMING MATCHES -->
         <section class="section upcoming-section">
           <div class="container">
+
             <div class="section-heading-row">
               <div>
-                <span class="eyebrow">Próximos jogos</span>
-                <h2 class="section-title section-title-sm">Calendário da A.E Tarian.</h2>
+                <span class="eyebrow">Jogos</span>
+                <h2>Próximos confrontos</h2>
               </div>
-              <a class="btn btn-light section-heading-action" href="jogos.html"><i data-lucide="calendar-days"></i> Ver calendário</a>
+
+              <a class="btn btn-light" href="jogos.html">
+                <i data-lucide="calendar"></i> Ver calendário
+              </a>
             </div>
 
-            <div class="match-rail" aria-label="Próximos jogos do A.E Tarian">
-              <article class="upcoming-card" v-for="match in fixtures" :key="match.date + match.opponent + match.competition">
+            <div class="match-rail">
+              <article class="upcoming-card" v-for="match in fixtures" :key="match.date + match.opponent">
+
                 <div class="upcoming-card-head">
-                  <span>{{ match.status || 'Casa' }}</span>
-                  <strong>{{ match.competition || 'Próximo jogo' }}</strong>
+                  <span>{{ match.status || 'Próximo jogo' }}</span>
+                  <strong>{{ match.competition }}</strong>
                 </div>
-                <p class="upcoming-round">{{ match.round || 'Rodada em definição' }}</p>
-                <div class="upcoming-teams">
-                  <div class="upcoming-logo">
-                    <img v-if="matchHomeLogo(match)" :src="matchHomeLogo(match)" :alt="'Logo ' + matchHomeName(match)" width="76" height="76" loading="lazy" decoding="async" />
-                    <span v-else>{{ teamInitials(matchHomeName(match)) }}</span>
-                  </div>
-                  <b>vs</b>
-                  <div class="upcoming-logo">
-                    <img v-if="matchAwayLogo(match)" :src="matchAwayLogo(match)" :alt="'Logo ' + matchAwayName(match)" width="76" height="76" loading="lazy" decoding="async" />
-                    <span v-else>{{ teamInitials(matchAwayName(match)) }}</span>
-                  </div>
-                </div>
+
                 <h3>{{ matchHomeName(match) }} vs {{ matchAwayName(match) }}</h3>
+
                 <div class="upcoming-meta">
-                  <span><i data-lucide="map-pin"></i> {{ match.venue || 'Local a definir' }}</span>
-                  <span><i data-lucide="calendar"></i> {{ match.date || 'Data a definir' }} <template v-if="match.time">· {{ match.time }}</template></span>
+                  <span><i data-lucide="map-pin"></i> {{ match.venue || 'A definir' }}</span>
+                  <span><i data-lucide="calendar"></i> {{ match.date }}</span>
                 </div>
-                <span class="upcoming-status">{{ match.ticketStatus || 'Em definição' }}</span>
+
+                <span class="upcoming-status">{{ match.ticketStatus || 'Em breve' }}</span>
+
               </article>
             </div>
+
           </div>
         </section>
 
-        <!-- resto mantido igual -->
-        <!-- (não alterei nada daqui pra baixo) -->
+        <!-- ABOUT -->
+        <section class="section">
+          <div class="container">
+            <h2>Sobre o clube</h2>
+            <p>
+              O A.E Tarian é um projeto esportivo focado em desenvolvimento, identidade e performance dentro de campo.
+              Construindo uma história sólida no futebol.
+            </p>
+          </div>
+        </section>
 
       </main>
+
     </div>
   </body>
 </html>
