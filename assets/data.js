@@ -1,130 +1,31 @@
 const tarianDefaults = {
   "navItems": [
-    {
-      "href": "index.html",
-      "label": "Home",
-      "id": "home"
-    },
-    {
-      "href": "clube.html",
-      "label": "Clube",
-      "id": "clube"
-    },
-    {
-      "href": "elenco.html",
-      "label": "Elenco",
-      "id": "elenco"
-    },
-    {
-      "href": "jogos.html",
-      "label": "Jogos",
-      "id": "jogos"
-    },
-    {
-      "href": "noticias.html",
-      "label": "Noticias",
-      "id": "noticias"
-    },
-    {
-      "href": "loja.html",
-      "label": "Loja",
-      "id": "loja"
-    },
-    {
-      "href": "contato.html",
-      "label": "Contato",
-      "id": "contato"
-    }
+    {"href":"index.html","label":"Home","id":"home"},
+    {"href":"clube.html","label":"Clube","id":"clube"},
+    {"href":"elenco.html","label":"Elenco","id":"elenco"},
+    {"href":"jogos.html","label":"Jogos","id":"jogos"},
+    {"href":"noticias.html","label":"Noticias","id":"noticias"},
+    {"href":"loja.html","label":"Loja","id":"loja"},
+    {"href":"contato.html","label":"Contato","id":"contato"}
   ],
-  "content": {
-    "home": {
-      "heroTitle": "A.E Tarian",
-      "heroText": "Um clube feito para competir com intensidade, revelar talentos e aproximar a torcida de cada partida.",
-      "aboutTitle": "Competir, formar e representar.",
-      "aboutText": "O A.E Tarian nasceu com a ambicao de jogar um futebol organizado, intenso e conectado com sua comunidade. Cada treino, jogo e projeto de base reforca a ideia de um clube moderno sem perder suas raizes.",
-      "ctaTitle": "Faca parte da proxima vitoria.",
-      "ctaText": " O A.E Tarian esta aberto a parcerias com marcas, projetos sociais, imprensa e atletas que queiram crescer junto com o clube."
-    },
-    "clube": {
-      "pageTitle": "Um clube criado para representar sua comunidade.",
-      "pageText": "O A.E Tarian une futebol competitivo, formacao de atletas e uma marca esportiva pronta para crescer com responsabilidade.",
-      "sectionTitle": "Verde e dourado dentro e fora de campo.",
-      "sectionText": "Nossa cultura combina trabalho, intensidade e respeito. O clube valoriza quem treina com compromisso, joga pelo coletivo e entende que cada partida tambem constroi uma relacao com a torcida."
-    },
-    "elenco": {
-      "pageTitle": "Catalogo de jogadores do A.E Tarian",
-      "pageText": "Fotos, nomes e numeros de camisa do elenco principal em uma visualizacao simples para a torcida.",
-      "sectionTitle": "Jogadores cadastrados.",
-      "sectionText": "Mantenha o catalogo atualizado pelo painel admin sempre que entrar ou sair um atleta."
-    },
-    "jogos": {
-      "pageTitle": "Jogos, resultados e proximos desafios.",
-      "pageText": "Acompanhe os compromissos do A.E Tarian na temporada e os resultados recentes da equipe.",
-      "sectionTitle": "Proxima partida em casa.",
-      "sectionText": "O A.E Tarian recebe mais um jogo decisivo com entrada da torcida pelo portao principal e operacao especial para torcedores."
-    },
-    "noticias": {
-      "pageTitle": "Informacao oficial para torcida, imprensa e parceiros.",
-      "pageText": "Bastidores, comunicados, preparacao, resultados e projetos do A.E Tarian reunidos em um so lugar.",
-      "sectionTitle": "Ultimas publicacoes."
-    },
-    "loja": {
-      "pageTitle": "Loja oficial do A.E Tarian",
-      "pageText": "Produtos do clube para torcida, treinos e dias de jogo.",
-      "sectionTitle": "Catalogo oficial.",
-      "sectionText": "Escolha uma categoria, confira os detalhes e fale com o clube para comprar."
-    },
-    "contato": {
-      "pageTitle": "Vamos conversar sobre futebol, torcida e parcerias.",
-      "pageText": "Use os canais oficiais para falar com o A.E Tarian sobre patrocinio, imprensa, jogos, atletas ou projetos da comunidade.",
-      "sectionTitle": "O clube responde por aqui.",
-      "sectionText": "Centralize o primeiro contato pelo formulario ou pelos canais abaixo."
-    }
-  },
-  "stats": [
-    {"label": "Fundado", "value": "07 / Julho / 2014"},
-    {"label": "Categoria", "value": "Adulto"},
-    {"label": "Base", "value": "A.E Tarian."},
-    {"label": "Torcida", "value": "Verde & Azul."}
-  ],
-  "principles": [
-    {"icon": "shield-check", "title": "Identidade forte", "text": "O A.E Tarian joga com disciplina, coragem e respeito pela comunidade que veste nossas cores."},
-    {"icon": "activity", "title": "Futebol intenso", "text": "Pressao alta, transicoes rapidas e um elenco preparado para competir ate o ultimo minuto."},
-    {"icon": "users", "title": "Formacao local", "text": "Valorizamos atletas da regiao e abrimos espaco para novos talentos crescerem dentro do clube."}
-  ],
-  "shopSections": [
-    {"eyebrow": "Uniformes", "title": "Camisas e kits de jogo.", "text": "Pecas para vestir o A.E Tarian em treinos, arquibancada e dias de partida.", "category": "Uniformes"},
-    {"eyebrow": "Treino", "title": "Linha de treino.", "text": "Produtos para rotina de atletas, comissao e torcedores que vivem futebol.", "category": "Treino"},
-    {"eyebrow": "Acessorios", "title": "Detalhes para completar o kit.", "text": "Itens uteis para jogo, arquibancada e uso no dia a dia.", "category": "Acessorios"}
-  ]
+  "content":{"home":{"heroTitle":"A.E Tarian","heroText":"Um clube feito para competir com intensidade, revelar talentos e aproximar a torcida de cada partida.","aboutTitle":"Competir, formar e representar.","aboutText":"O A.E Tarian nasceu com a ambicao de jogar um futebol organizado, intenso e conectado com sua comunidade.","ctaTitle":"Faca parte da proxima vitoria.","ctaText":"O A.E Tarian esta aberto a parcerias."},"clube":{"pageTitle":"Um clube criado para representar sua comunidade.","pageText":"O A.E Tarian une futebol competitivo, formacao de atletas e uma marca esportiva.","sectionTitle":"Verde e dourado dentro e fora de campo.","sectionText":"Nossa cultura combina trabalho, intensidade e respeito."},"elenco":{"pageTitle":"Catalogo de jogadores do A.E Tarian","pageText":"Fotos, nomes e numeros de camisa do elenco principal.","sectionTitle":"Jogadores cadastrados.","sectionText":"Mantenha o catalogo atualizado pelo painel admin."},"jogos":{"pageTitle":"Jogos, resultados e proximos desafios.","pageText":"Acompanhe os compromissos do A.E Tarian.","sectionTitle":"Proxima partida em casa.","sectionText":"O A.E Tarian recebe mais um jogo decisivo."},"noticias":{"pageTitle":"Informacao oficial para torcida, imprensa e parceiros.","pageText":"Bastidores, comunicados, preparacao, resultados e projetos.","sectionTitle":"Ultimas publicacoes."},"loja":{"pageTitle":"Loja oficial do A.E Tarian","pageText":"Produtos do clube para torcida, treinos e dias de jogo.","sectionTitle":"Catalogo oficial.","sectionText":"Escolha uma categoria e fale com o clube."},"contato":{"pageTitle":"Vamos conversar sobre futebol, torcida e parcerias.","pageText":"Use os canais oficiais para falar com o A.E Tarian.","sectionTitle":"O clube responde por aqui.","sectionText":"Centralize o primeiro contato pelo formulario."}},
+  "stats":[{"label":"Fundado","value":"07 / Julho / 2014"},{"label":"Categoria","value":"Adulto"},{"label":"Base","value":"A.E Tarian."},{"label":"Torcida","value":"Verde & Azul."}],
+  "principles":[{"icon":"shield-check","title":"Identidade forte","text":"O A.E Tarian joga com disciplina, coragem e respeito."},{"icon":"activity","title":"Futebol intenso","text":"Pressao alta, transicoes rapidas e elenco preparado."},{"icon":"users","title":"Formacao local","text":"Valorizamos atletas da regiao e abrimos espaco para novos talentos."}],
+  "shopSections":[{"eyebrow":"Uniformes","title":"Camisas e kits de jogo.","text":"Pecas para vestir o A.E Tarian.","category":"Uniformes"},{"eyebrow":"Treino","title":"Linha de treino.","text":"Produtos para rotina de atletas.","category":"Treino"},{"eyebrow":"Acessorios","title":"Detalhes para completar o kit.","text":"Itens uteis para jogo e arquibancada.","category":"Acessorios"}],
+  "products":[{"name":"Camisa oficial A.E Tarian","productId":"TFC-001","slug":"camisa-oficial-tarian-fc","category":"Uniformes","price":"R$ 129,90","badge":"Mais pedido","description":"Camisa principal do clube.","details":"Camisa principal do A.E Tarian.","sizes":"P,M,G,GG","colors":"Azul e amarelo","material":"Poliester esportivo","whatsapp":"5500000000000","whatsappMessage":"Ola, tenho interesse na Camisa oficial","image":"assets/tarian-hero.webp","buttonText":"Comprar","buyLink":"contato.html","available":true},{"name":"Bermuda de treino","productId":"TFC-002","slug":"bermuda-de-treino","category":"Treino","price":"R$ 79,90","badge":"Treino","description":"Bermuda confortavel para treino.","details":"Bermuda de treino com corte esportivo.","sizes":"P,M,G,GG","colors":"Preto, azul","material":"Microfibra esportiva","whatsapp":"5500000000000","whatsappMessage":"Ola, tenho interesse na Bermuda de treino","image":"assets/tarian-hero.webp","buttonText":"Comprar","buyLink":"contato.html","available":true},{"name":"Chuteira campo","productId":"TFC-003","slug":"chuteira-campo","category":"Treino","price":"Sob consulta","badge":"Campo","description":"Modelo para gramado natural.","details":"Chuteira para campo com travas.","sizes":"Consultar","colors":"Consultar","material":"Sintetico esportivo","whatsapp":"5500000000000","whatsappMessage":"Ola, tenho interesse na Chuteira campo","image":"assets/tarian-hero.webp","buttonText":"Consultar","buyLink":"contato.html","available":true},{"name":"Meiao A.E Tarian","productId":"TFC-004","slug":"meiao-tarian","category":"Uniformes","price":"R$ 34,90","badge":"Kit","description":"Meiao esportivo do clube.","details":"Meiao esportivo do A.E Tarian.","sizes":"34-38,39-43","colors":"Azul e amarelo","material":"Poliamida com elastano","whatsapp":"5500000000000","whatsappMessage":"Ola, tenho interesse no Meiao","image":"assets/tarian-hero.webp","buttonText":"Comprar","buyLink":"contato.html","available":true},{"name":"Garrafa da torcida","productId":"TFC-005","slug":"garrafa-da-torcida","category":"Acessorios","price":"R$ 39,90","badge":"Torcida","description":"Garrafa personalizada.","details":"Garrafa personalizada do A.E Tarian.","sizes":"600 ml","colors":"Azul e amarelo","material":"Plastico resistente","whatsapp":"5500000000000","whatsappMessage":"Ola, tenho interesse na Garrafa","image":"assets/tarian-hero.webp","buttonText":"Comprar","buyLink":"contato.html","available":true}],
+  "players":[{"name":"Rafael Monteiro","position":"Goleiro","number":1,"photo":"","id":"p1"},{"name":"Caio Ferreira","position":"Zagueiro","number":4,"photo":"","id":"p2"},{"name":"Lucas Prado","position":"Lateral","number":6,"photo":"","id":"p3"},{"name":"Thiago Nunes","position":"Volante","number":8,"photo":"","id":"p4"},{"name":"Mateus Rocha","position":"Meia","number":10,"photo":"","id":"p5"},{"name":"Bruno Sales","position":"Atacante","number":11,"photo":"","id":"p6"},{"name":"Diego Almeida","position":"Ponta","number":17,"photo":"","id":"p7"},{"name":"Vitor Lima","position":"Atacante","number":23,"photo":"","id":"p8"},{"name":"Henrique Alves","position":"Lateral","number":2,"photo":"","id":"p9"},{"name":"Samuel Costa","position":"Zagueiro","number":3,"photo":"","id":"p10"},{"name":"Andre Campos","position":"Volante","number":5,"photo":"","id":"p11"},{"name":"Felipe Araujo","position":"Ponta","number":7,"photo":"","id":"p12"},{"name":"Joao Pedro","position":"Centroavante","number":9,"photo":"","id":"p13"},{"name":"Murilo Santos","position":"Goleiro","number":12,"photo":"","id":"p14"},{"name":"Gustavo Leal","position":"Meia","number":14,"photo":"","id":"p15"},{"name":"Renan Dias","position":"Zagueiro","number":15,"photo":"","id":"p16"},{"name":"Igor Martins","position":"Atacante","number":18,"photo":"","id":"p17"},{"name":"Daniel Vieira","position":"Volante","number":19,"photo":"","id":"p18"},{"name":"Nicolas Freitas","position":"Lateral","number":21,"photo":"","id":"p19"},{"name":"Eduardo Ramos","position":"Meia","number":30,"photo":"","id":"p20"}],
+  "staff":[{"name":"Marcos Tavares","role":"Treinador","photo":"","text":"Comanda o modelo de jogo."},{"name":"Ana Ribeiro","role":"Preparadora fisica","photo":"","text":"Responsavel por performance."},{"name":"Pedro Martins","role":"Analista","photo":"","text":"Organiza dados e videos."}],
+  "fixtures":[{"date":"22 JUN","time":"16:00","opponent":"Atletico Vale","status":"Casa","competition":"Liga Regional","venue":"A.E Tarian","teamLogo":"assets/tarian-logo.webp","opponentLogo":"","round":"","ticketStatus":"Em definicao"}],
+  "results":[{"date":"15 JUN","opponent":"Vila Nova","score":"3 x 1","venue":"A.E Tarian","note":"Vitoria"},{"date":"08 JUN","opponent":"Santa Luz","score":"2 x 2","venue":"Campo Santa Luz","note":"Empate"},{"date":"01 JUN","opponent":"Porto FC","score":"2 x 0","venue":"A.E Tarian","note":"Vitoria"},{"date":"25 MAI","opponent":"Estrela Azul","score":"1 x 0","venue":"Estadio Azul","note":"Vitoria"}],
+  "news":[{"date":"16 Jun 2026","tag":"Clube","title":"A.E Tarian apresenta nova identidade","slug":"tarian-fc-apresenta-nova-identidade","image":"assets/tarian-hero.webp","imageAlt":"Campo iluminado","excerpt":"O verde e dourado marcam uma fase de crescimento.","href":"noticias.html","cta":"Leia agora","text":"O verde e dourado marcam uma fase de crescimento."},{"date":"14 Jun 2026","tag":"Elenco","title":"Comissao tecnica confirma planejamento","slug":"comissao-tecnica-confirma-planejamento","image":"assets/tarian-hero.webp","imageAlt":"Treino do A.E Tarian","excerpt":"Treinos integrados e analise de adversarios.","href":"noticias.html","cta":"Leia agora","text":"Treinos integrados e analise de adversarios."},{"date":"10 Jun 2026","tag":"Base","title":"Projeto de formacao abre observacao","slug":"projeto-de-formacao-abre-observacao","image":"assets/tarian-hero.webp","imageAlt":"Base do A.E Tarian","excerpt":"A iniciativa busca aproximar o clube dos bairros.","href":"noticias.html","cta":"Leia agora","text":"A iniciativa busca aproximar o clube dos bairros."},{"date":"06 Jun 2026","tag":"Torcida","title":"Setor dedicado a socios e familias","slug":"tarian-arena-tera-setor-dedicado","image":"assets/tarian-hero.webp","imageAlt":"Torcida do A.E Tarian","excerpt":"Experiencia mais organizada para quem acompanha o time.","href":"noticias.html","cta":"Leia agora","text":"Experiencia mais organizada para quem acompanha o time."},{"date":"02 Jun 2026","tag":"Performance","title":"Dados de jogo orientam ajustes","slug":"dados-de-jogo-orientam-ajustes","image":"assets/tarian-hero.webp","imageAlt":"Analise de performance","excerpt":"Indicadores simples para evoluir posse e finalizacoes.","href":"noticias.html","cta":"Leia agora","text":"Indicadores simples para evoluir posse e finalizacoes."},{"date":"28 Mai 2026","tag":"Comunidade","title":"Calendario de acoes sociais no bairro","slug":"clube-anuncia-calendario-de-acoes","image":"assets/tarian-hero.webp","imageAlt":"Acoes sociais","excerpt":"Eventos com escolas e projetos locais.","href":"noticias.html","cta":"Leia agora","text":"Eventos com escolas e projetos locais."}],
+  "sponsors":["Aurora Bank","Vitta Sports","Mercado Verde","Nobre Energia"],
+  "contacts":[{"label":"E-mail","value":"contato@tarianfc.com.br","href":"mailto:contato@tarianfc.com.br","icon":"Nosso Contato via E-mail."},{"label":"Telefone","value":"(00) 00000-0000","href":"tel:+5500000000000","icon":"Nosso contato via Telefone."},{"label":"Endereco","value":"A.E Tarian, setor administrativo.","href":"","icon":"Nosso Endereco."},{"label":"Atendimento","value":"Segunda a sexta, 9h as 18h","href":"","icon":"Horario de atendimento."}],
+  "timeline":[{"year":"2019","title":"Inicio do projeto","text":"Um grupo de atletas e torcedores organiza o A.E Tarian."},{"year":"2021","title":"Primeira final","text":"O clube chega a uma decisao regional."},{"year":"2024","title":"A.E Tarian","text":"A equipe passa a mandar jogos em uma casa propria."},{"year":"2026","title":"Nova etapa","text":"Identidade renovada, elenco mais estruturado."}]
 };
 
-function cloneTarianData(data = tarianDefaults) {
-  return JSON.parse(JSON.stringify(data));
-}
+function cloneTarianData(data){return JSON.parse(JSON.stringify(data||tarianDefaults))}
+function mergeTarianData(base,remote){if(!remote||typeof remote!=="object")return base;var output=Array.isArray(base)?[...base]:{...base};Object.keys(remote).forEach(function(key){var value=remote[key];if(Array.isArray(value)){if(key==="navItems"&&Array.isArray(base[key])){var byId=new Map(value.map(function(item){return[item.id,item]}));output[key]=[...value];base[key].forEach(function(item){if(!byId.has(item.id))output[key].push(item)})}else{output[key]=value}}else if(value&&typeof value==="object"&&base[key]&&typeof base[key]==="object"&&!Array.isArray(base[key])){output[key]=mergeTarianData(base[key],value)}else if(value!==undefined){output[key]=value}});return output}
 
-function mergeTarianData(base, remote) {
-  if (!remote || typeof remote !== "object") return base;
-  const output = Array.isArray(base) ? [...base] : { ...base };
-  Object.keys(remote).forEach((key) => {
-    const value = remote[key];
-    if (Array.isArray(value)) {
-      if (key === "navItems" && Array.isArray(base[key])) {
-        const byId = new Map(value.map((item) => [item.id, item]));
-        output[key] = [...value];
-        base[key].forEach((item) => { if (!byId.has(item.id)) output[key].push(item); });
-      } else {
-        output[key] = value;
-      }
-    } else if (value && typeof value === "object" && base[key] && typeof base[key] === "object" && !Array.isArray(base[key])) {
-      output[key] = mergeTarianData(base[key], value);
-    } else if (value !== undefined) {
-      output[key] = value;
-    }
-  });
-  return output;
-}
-
-window.tarianDefaults = tarianDefaults;
-window.cloneTarianData = cloneTarianData;
-window.mergeTarianData = mergeTarianData;
+window.tarianDefaults=tarianDefaults;
+window.cloneTarianData=cloneTarianData;
+window.mergeTarianData=mergeTarianData;
